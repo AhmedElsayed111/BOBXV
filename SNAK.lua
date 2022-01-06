@@ -10568,7 +10568,7 @@ if data and data.type_ and data.type_.channel_ and data.type_.channel_.status_ a
 redis:sadd(bot_id..'SNAK:ChekBotAdd',v)  
 end
 end
-https.request("..resultss..""..LUATELE..")
+https.request(""..resultss..""..LUATELE.."")
 end
 end
 
