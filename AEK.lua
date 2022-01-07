@@ -9906,17 +9906,6 @@ print('User Id : '..msg_user_send_id)
 LuaTele.sendText(msg_chat_id,msg_id, "•︙ تم تحديث الملفات ♻","md",true)
 dofile('AEK.lua')  
 end
-if text == 'بوب' or text == 'البوب' or text == 'احمد' then
-photo = "https://t.me/UU_SNAKVX/647"
-local RinkBot = msg.Name_Controller
-local Name = '𝙒𝙀𝙇𝘾𝙊𝙈𝙀 𝘽𝙍𝙊'
-keyboard = {} 
-keyboard.inline_keyboard = {
-{{text = '𝗘𝗟𝗕𝗢𝗕 ',url="https://t.me/UU_0P"}},
-}
-local msgg = msg_id/2097152/0.5
-https.request("https://api.telegram.org/bot"..Token.."/sendphoto?chat_id=" .. msg_chat_id .. "&photo="..photo.."&caption=".. URL.escape(Name).."&photo="..msgg.."&parse_mode=markdown&disable_web_paftge_preview=true&reply_markup="..JSON.encode(keyboard))
-end
 if text == '/start' then
 Redis:sadd(AEK..'AEK:Num:User:Pv',msg.sender.user_id)  
 if not msg.ControllerBot then
@@ -10569,7 +10558,6 @@ end
 end
 end 
 end --UserBot
-
 end -- File_Bot_Run
 
 
