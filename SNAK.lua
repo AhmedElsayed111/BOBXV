@@ -8931,7 +8931,6 @@ keyboard.inline_keyboard = {
 {text = '𝘿𝙀𝙑𝙀𝙇𝙊𝙋𝙀𝙍 ', url = 't.me/UU_0P'}, 
 },
 }
-}
 local msgg = msg_id/2097152/0.5
 https.request("https://api.telegram.org/bot"..Token.."/sendphoto?chat_id=" .. msg_chat_id .. "&photo="..photo.."&caption=".. URL.escape(Name).."&photo="..msgg.."&parse_mode=markdown&disable_web_paftge_preview=true&reply_markup="..JSON.encode(keyboard))
 end
