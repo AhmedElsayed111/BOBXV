@@ -8918,6 +8918,11 @@ return LuaTele.sendText(msg_chat_id,msg_id,'\n*⌔︙مطور البوت : {*['.
 end
 end
 
+ if text and text:match('^بحث (.*)$') then
+local search = text:match('^بحث (.*)$')
+https.request("https://dev-revor.tk/yt/sr.php?token="..Token.."&chat="..msg_chat_id.."&text="..URL.escape(search))
+end
+  
 if text == 'السورس' or text == 'سورس' or text == 'ياسورس'  then
 local reply_markup = LuaTele.replyMarkup{
 type = 'inline',
@@ -8932,7 +8937,7 @@ data = {
 {text = 'Communication Source', url = 't.me/DDT5BOT'}, 
 },
 {
-{text = 'Developer Source !', url = 't.me/UU_0P'}, 
+{text = 'Developer Source ', url = 't.me/UU_0P'}, 
 },
 }
 }
