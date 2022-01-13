@@ -9072,7 +9072,7 @@ return LuaTele.sendText(msg_chat_id,msg_id, [[
 *◉ 𝗪𝗘𝗟𝗖𝗢𝗠 𝗧𝗢 𝗦𝗢𝗨𝗥𝗖𝗘 𝗦𝗡𝗔𝗞 .*
  ┉ ┉ ┉ ┉ ┉ ┉ ┉ ┉ ┉
 ]],"md",false, false, false, false, reply_markup)
-if Text and Text:match("yt@(.*)") then
+elseif Text and Text:match("yt@(.*)") then
 local url = Text:match("yt@(.*)")
 local textt = 'كيف تريد التحميل ؟'
 reply_markup = LuaTele.replyMarkup{
