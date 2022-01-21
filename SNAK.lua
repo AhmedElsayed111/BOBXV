@@ -10459,7 +10459,7 @@ data = {
 {text = '- اضفني لمجموعتك.', url = 't.me/'..UserBot..'?startgroup=new'}, 
 },
 {
-{text = '- قناة السورس.', url = 't.me/UU_SNAK'},{text = '- لتنصيب بوتك', url = 'https://t.me/UU_0P'}, 
+{text = '- قناة السورس.', url = 't.me/UU_SNAK'},{text = '- لتنصيب بوتك', url = 'https://t.me/xb8bbot'}, 
 },
 }
 }
@@ -10472,7 +10472,7 @@ data = {
 {text = '• اضفني لمجموعتك.', url = 't.me/'..UserBot..'?startgroup=new'},  
 },
 {
-{text = '• قناة السورس.', url = 't.me/UU_SNAK'},{text = '- لتنصيب بوتك', url = 'https://t.me/UU_0P'}, 
+{text = '• قناة السورس.', url = 't.me/UU_SNAK'},{text = '- لتنصيب بوتك', url = 'https://t.me/xb8bbot'}, 
 },
 }
 }
