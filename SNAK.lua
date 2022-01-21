@@ -9165,6 +9165,20 @@ local msgg = msg_id/2097152/0.5
 https.request("https://api.telegram.org/bot"..Token.."/sendphoto?chat_id=" .. msg_chat_id .. "&photo="..photo.."&caption=".. URL.escape(Name).."&photo="..msgg.."&parse_mode=markdown&disable_web_page_preview=true&reply_markup="..JSON.encode(keyboard))
 end
 
+if text == 'المطور' or text == 'مطور' then
+local TextingDevRevor = Redis:get(Revor..'Revor:Texting:DevRevor')
+if TextingDevRevor then 
+return LuaTele.sendText(msg_chat_id,msg_id,TextingDevRevor,"md",true)  
+else
+local UserInfo = LuaTele.getUser(Sudo_Id)
+for Name_User in string.gmatch(UserInfo.first_name, "[^%s]+" ) do
+UserInfo.first_name = Name_User
+break
+end 
+return LuaTele.sendText(msg_chat_id,msg_id,'\n*⌔︙مطور البوت : {*['..UserInfo.first_name..'](tg://user?id='..UserInfo.id..')*}*',"md",true)  
+end
+end
+
 if text == 'السورس' or text == 'سورس' or text == 'يا سورس' or text == 'source' then
 local T =[[
 ◉ 𝗪𝗘𝗟𝗖𝗢𝗠 𝗧𝗢 𝗦𝗢𝗨𝗥𝗖𝗘 𝗦𝗡𝗔𝗞 .
@@ -9173,7 +9187,7 @@ keyboard = {}
 keyboard.inline_keyboard = {
 {{text = '◉ 𝘿𝙀𝙑  .',url="https://t.me/UU_0P"},{text = '◉ 𝘿𝙀𝙑  .',url="https://t.me/XB0BB"}},
 {{text = '◉ 𝘽𝙊𝙏 𝙎𝙉𝘼𝙆  .', url = 't.me/xb8bbot'}},
-{{text = '• 𝙎𝙊𝙐𝙍𝘾𝙀 𝙎𝙉𝘼𝙆  .', url = 't.me/UU_SNAK'}}, 
+{{text = '◉ 𝙎𝙊𝙐𝙍𝘾𝙀 𝙎𝙉𝘼𝙆  .', url = 't.me/UU_SNAK'}}, 
 {{text = 'اضف البوت لمجموعتك', url = 't.me/'..UserBot..'?startgroup=new'}}, 
 }
 local msgg = msg_id/2097152/0.5
