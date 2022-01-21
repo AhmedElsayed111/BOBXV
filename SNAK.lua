@@ -4426,6 +4426,9 @@ end
 if UserName and UserName:match('(%S+)[Bb][Oo][Tt]') then
 return LuaTele.sendText(msg_chat_id,msg_id,"\n•عذرآ لا تستطيع استخدام معرف البوت ","md",true)  
 end
+if Controller(msg_chat_id,UserId_Info.id) == 'مطور السورس' then
+return LuaTele.sendText(msg_chat_id,msg_id,"\n*•عذرآ لا تستطيع استخدام الامر على { "..Controller(msg_chat_id,UserId_Info.id).." } *","md",true)  
+end
 if Controller(msg_chat_id,UserId_Info.id) == 'المطور الاساسي' then
 return LuaTele.sendText(msg_chat_id,msg_id,"\n*•عذرآ لا تستطيع استخدام الامر على { "..Controller(msg_chat_id,UserId_Info.id).." } *","md",true)  
 end
@@ -4482,6 +4485,9 @@ return LuaTele.sendText(msg_chat_id,msg_id,"\n•عذرآ لا تستطيع اس
 end
 if UserName and UserName:match('(%S+)[Bb][Oo][Tt]') then
 return LuaTele.sendText(msg_chat_id,msg_id,"\n•عذرآ لا تستطيع استخدام معرف البوت ","md",true)  
+end
+if Controller(msg_chat_id,UserId_Info.id) == 'مطور السورس' then
+return LuaTele.sendText(msg_chat_id,msg_id,"\n*•عذرآ لا تستطيع استخدام الامر على { "..Controller(msg_chat_id,UserId_Info.id).." } *","md",true)  
 end
 if Controller(msg_chat_id,UserId_Info.id) == 'المطور الاساسي' then
 return LuaTele.sendText(msg_chat_id,msg_id,"\n*•عذرآ لا تستطيع استخدام الامر على { "..Controller(msg_chat_id,UserId_Info.id).." } *","md",true)  
@@ -4893,6 +4899,9 @@ end
 if UserInfo and UserInfo.type and UserInfo.type.luatele == "userTypeBot" then
 return LuaTele.sendText(msg_chat_id,msg_id,"\n•عذرآ لا تستطيع استخدام الامر على البوت ","md",true)  
 end
+if Controller(msg_chat_id,Message_Reply.sender.user_id) == 'مطور السورس' then
+return LuaTele.sendText(msg_chat_id,msg_id,"\n*•عذرآ لا تستطيع استخدام الامر على { "..Controller(msg_chat_id,Message_Reply.sender.user_id).." } *","md",true)  
+end
 if Controller(msg_chat_id,Message_Reply.sender.user_id) == 'المطور الاساسي' then
 return LuaTele.sendText(msg_chat_id,msg_id,"\n*•عذرآ لا تستطيع استخدام الامر على { "..Controller(msg_chat_id,Message_Reply.sender.user_id).." } *","md",true)  
 end
@@ -4943,6 +4952,9 @@ return LuaTele.sendText(msg_chat_id,msg_id,"\n•عذرآ تستطيع فقط ا
 end
 if UserInfo and UserInfo.type and UserInfo.type.luatele == "userTypeBot" then
 return LuaTele.sendText(msg_chat_id,msg_id,"\n•عذرآ لا تستطيع استخدام الامر على البوت ","md",true)  
+end
+if Controller(msg_chat_id,Message_Reply.sender.user_id) == 'مطور السورس' then
+return LuaTele.sendText(msg_chat_id,msg_id,"\n*•عذرآ لا تستطيع استخدام الامر على { "..Controller(msg_chat_id,Message_Reply.sender.user_id).." } *","md",true)  
 end
 if Controller(msg_chat_id,Message_Reply.sender.user_id) == 'المطور الاساسي' then
 return LuaTele.sendText(msg_chat_id,msg_id,"\n*•عذرآ لا تستطيع استخدام الامر على { "..Controller(msg_chat_id,Message_Reply.sender.user_id).." } *","md",true)  
@@ -5197,6 +5209,9 @@ local UserInfo = LuaTele.getUser(UserId)
 if UserInfo.luatele == "error" and UserInfo.code == 6 then
 return LuaTele.sendText(msg_chat_id,msg_id,"\n•عذرآ لا تستطيع استخدام ايدي خطأ ","md",true)  
 end 
+if Controller(msg_chat_id,UserId) == 'مطور السورس' then
+return LuaTele.sendText(msg_chat_id,msg_id,"\n*•عذرآ لا تستطيع استخدام الامر على { "..Controller(msg_chat_id,UserId).." } *","md",true)  
+end
 if Controller(msg_chat_id,UserId) == 'المطور الاساسي' then
 return LuaTele.sendText(msg_chat_id,msg_id,"\n*•عذرآ لا تستطيع استخدام الامر على { "..Controller(msg_chat_id,UserId).." } *","md",true)  
 end
@@ -5242,6 +5257,9 @@ local UserInfo = LuaTele.getUser(UserId)
 if UserInfo.luatele == "error" and UserInfo.code == 6 then
 return LuaTele.sendText(msg_chat_id,msg_id,"\n•عذرآ لا تستطيع استخدام ايدي خطأ ","md",true)  
 end 
+if Controller(msg_chat_id,UserId) == 'مطور السورس' then
+return LuaTele.sendText(msg_chat_id,msg_id,"\n*•عذرآ لا تستطيع استخدام الامر على { "..Controller(msg_chat_id,UserId).." } *","md",true)  
+end
 if Controller(msg_chat_id,UserId) == 'المطور الاساسي' then
 return LuaTele.sendText(msg_chat_id,msg_id,"\n*•عذرآ لا تستطيع استخدام الامر على { "..Controller(msg_chat_id,UserId).." } *","md",true)  
 end
@@ -9153,10 +9171,9 @@ local T =[[
 ]]
 keyboard = {} 
 keyboard.inline_keyboard = {
-{{text = '◉ 𝘿𝙀𝙑  .',url="https://t.me/UU_0P"}},
-{{text = '◉ 𝘿𝙀𝙑  .',url="https://t.me/xb0bb"}},
+{{text = '◉ 𝘿𝙀𝙑  .',url="https://t.me/UU_0P"},{text = '◉ 𝘿𝙀𝙑  .',url="https://t.me/XB0BB"}},
 {{text = '◉ 𝘽𝙊𝙏 𝙎𝙉𝘼𝙆  .', url = 't.me/xb8bbot'}},
-{{text = '◉ 𝙎𝙊𝙐𝙍𝘾𝙀 𝙎𝙉𝘼𝙆  .', url = 't.me/UU_SNAK'}}, 
+{{text = '• 𝙎𝙊𝙐𝙍𝘾𝙀 𝙎𝙉𝘼𝙆  .', url = 't.me/UU_SNAK'}}, 
 {{text = 'اضف البوت لمجموعتك', url = 't.me/'..UserBot..'?startgroup=new'}}, 
 }
 local msgg = msg_id/2097152/0.5
