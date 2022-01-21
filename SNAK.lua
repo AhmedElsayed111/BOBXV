@@ -9139,6 +9139,20 @@ return LuaTele.sendText(msg_chat_id,msg_id,'\n* ⦁ مطور البوت : {*['..
 end
 end
 end
+if text == 'المطور' or text == 'مطور' then
+local TextingDevAEK = Redis:get(AEK..'AEK:Texting:DevAEK')
+if TextingDevAEK then 
+return LuaTele.sendText(msg_chat_id,msg_id,TextingDevAEK,"md",true)  
+else
+local UserInfo = LuaTele.getUser(Sudo_Id)
+for Name_User in string.gmatch(UserInfo.first_name, "[^%s]+" ) do
+UserInfo.first_name = Name_User
+break
+end 
+return LuaTele.sendText(msg_chat_id,msg_id,'\n*•مطور البوت : {*['..UserInfo.first_name..'](tg://user?id='..UserInfo.id..')*}*',"md",true)  
+end
+end
+
 if text == 'البوب' or text == 'احمد' or text == 'بوب' then
 photo = "https://t.me/UU_SNAKVX/647"
 local RinkBot = msg.Name_Controller
@@ -9163,20 +9177,6 @@ keyboard.inline_keyboard = {
 }
 local msgg = msg_id/2097152/0.5
 https.request("https://api.telegram.org/bot"..Token.."/sendphoto?chat_id=" .. msg_chat_id .. "&photo="..photo.."&caption=".. URL.escape(Name).."&photo="..msgg.."&parse_mode=markdown&disable_web_page_preview=true&reply_markup="..JSON.encode(keyboard))
-end
-
-if text == 'المطور' or text == 'مطور' then
-local TextingDevRevor = Redis:get(Revor..'Revor:Texting:DevRevor')
-if TextingDevRevor then 
-return LuaTele.sendText(msg_chat_id,msg_id,TextingDevRevor,"md",true)  
-else
-local UserInfo = LuaTele.getUser(Sudo_Id)
-for Name_User in string.gmatch(UserInfo.first_name, "[^%s]+" ) do
-UserInfo.first_name = Name_User
-break
-end 
-return LuaTele.sendText(msg_chat_id,msg_id,'\n*⌔︙مطور البوت : {*['..UserInfo.first_name..'](tg://user?id='..UserInfo.id..')*}*',"md",true)  
-end
 end
 
 if text == 'السورس' or text == 'سورس' or text == 'يا سورس' or text == 'source' then
@@ -13077,7 +13077,7 @@ local Text ='*•︙تم اختيار الصوره لك*'
 keyboard = {}  
 keyboard.inline_keyboard = { 
 {{text = '• 𝘿𝙀𝙑  .',url="https://t.me/UU_0P"}},
-{{text = '• 𝙎𝙊𝙐𝙍𝘾𝙀 𝙎𝙉𝘼𝙆 .',url="t.me/UU_SNAK"}},
+{{text = '• 𝙎𝙊??𝙍𝘾𝙀 𝙎𝙉𝘼𝙆 .',url="t.me/UU_SNAK"}},
 } 
 local msg_id = msg.id_/2097152/0.5 
 https.request("https://api.telegram.org/bot"..TokenBot..'/sendphoto?chat_id=' .. msg.chat_id_ .. '&photo=https://t.me/PhotosDavid/'..Rio..'&caption=' .. URL.escape(Text).."&reply_to_message_id="..msg_id.."&parse_mode=markdown&disable_web_page_preview=true&reply_markup="..JSON.encode(keyboard)) 
