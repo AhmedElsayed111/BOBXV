@@ -2723,7 +2723,7 @@ return LuaTele.sendPhoto(msg.chat_id, msg.id, photo.photos[1].sizes[#photo.photo
 '\n*✘︙'..Description..
 '\n✘︙ايديك : '..UserId..
 '\n✘︙معرفك : '..UserInfousername..
-'\n•‍︙رتبتك : '..RinkBot..
+'\n✘︙رتبتك : '..RinkBot..
 '\n✘︙صورك : '..TotalPhoto..
 '\n✘︙رسائلك : '..TotalMsg..
 '\n✘︙تعديلاتك : '..TotalEdit..
@@ -2733,7 +2733,7 @@ else
 return LuaTele.sendText(msg_chat_id,msg_id,
 '\n*✘︙ايديك : '..UserId..
 '\n✘︙معرفك : '..UserInfousername..
-'\n•‍︙رتبتك : '..RinkBot..
+'\n✘︙رتبتك : '..RinkBot..
 '\n✘︙رسائلك : '..TotalMsg..
 '\n✘︙تعديلاتك : '..TotalEdit..
 '\n✘︙تفاعلك : '..TotalMsgT..
@@ -2757,7 +2757,7 @@ else
 return LuaTele.sendText(msg_chat_id,msg_id,
 '\n*✘︙ايديك : '..UserId..
 '\n✘︙معرفك : '..UserInfousername..
-'\n•‍︙رتبتك : '..RinkBot..
+'\n✘︙رتبتك : '..RinkBot..
 '\n✘︙رسائلك : '..TotalMsg..
 '\n✘︙تعديلاتك : '..TotalEdit..
 '\n✘︙تفاعلك : '..TotalMsgT..
