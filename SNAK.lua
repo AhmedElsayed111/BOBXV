@@ -6247,6 +6247,10 @@ end
 if text == "غنيلي" or text == "غني" then 
 Abs = math.random(1,200);
 local Text ='*◉︙تم اختيار الاغنيه لك*'
+keyboard = {}  
+keyboard.inline_keyboard = { 
+{{text="« مره أخري »",callback_data="/Song:"..msg.sender_user_id_}}
+}
 local MsgId = msg.id/2097152/0.5
 local MSGID = string.gsub(MsgId,'.0','')
 https.request("https://api.telegram.org/bot"..Token..'/sendVoice?chat_id=' .. msg.chat_id .. '&voice=https://t.me/hhhbobxv/'..Abs..'&caption=' .. URL.escape(Text).."&reply_to_message_id="..MsgId.."&parse_mode=markdown") 
