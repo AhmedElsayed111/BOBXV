@@ -1975,14 +1975,24 @@ Redis:set(SNAK..'SNAK:Texting:DevSNAK',text)
 Redis:del(SNAK..'SNAK:GetTexting:DevSNAK'..msg_chat_id..':'..msg.sender.user_id)
 return LuaTele.sendText(msg_chat_id,msg_id,'✘︙تم حفظ كليشة المطور')
 end
-if Redis:get(SNAK.."SNAK:Redis:Id:Group"..msg.chat_id..""..msg.sender.user_id) then 
+if Redis:get(AEK.."AEK:Redis:Id:Groups"..msg.chat_id..""..msg.sender.user_id) then 
 if text == 'الغاء' then 
-LuaTele.sendText(msg_chat_id,msg_id, "\n✘︙تم الغاء امر تعين الايدي","md",true)  
-Redis:del(SNAK.."SNAK:Redis:Id:Group"..msg.chat_id..""..msg.sender.user_id) 
+LuaTele.sendText(msg_chat_id,msg_id, "\n✘︙تم الغاء امر تعين الايدي عام","md",true)  
+Redis:del(AEK.."AEK:Redis:Id:Groups"..msg.chat_id..""..msg.sender.user_id) 
 return false  
 end 
-Redis:del(SNAK.."SNAK:Redis:Id:Group"..msg.chat_id..""..msg.sender.user_id) 
-Redis:set(SNAK.."SNAK:Set:Id:Group"..msg.chat_id,text:match("(.*)"))
+Redis:del(AEK.."AEK:Redis:Id:Groups"..msg.chat_id..""..msg.sender.user_id) 
+Redis:set(AEK.."AEK:Set:Id:Groups",text:match("(.*)"))
+LuaTele.sendText(msg_chat_id,msg_id,'✘︙تم تعين الايدي عام',"md",true)  
+end
+if Redis:get(AEK.."AEK:Redis:Id:Group"..msg.chat_id..""..msg.sender.user_id) then 
+if text == 'الغاء' then 
+LuaTele.sendText(msg_chat_id,msg_id, "\n✘︙تم الغاء امر تعين الايدي","md",true)  
+Redis:del(AEK.."AEK:Redis:Id:Group"..msg.chat_id..""..msg.sender.user_id) 
+return false  
+end 
+Redis:del(AEK.."AEK:Redis:Id:Group"..msg.chat_id..""..msg.sender.user_id) 
+Redis:set(AEK.."AEK:Set:Id:Group"..msg.chat_id,text:match("(.*)"))
 LuaTele.sendText(msg_chat_id,msg_id,'✘︙تم تعين الايدي الجديد',"md",true)  
 end
 if Redis:get(SNAK.."SNAK:Change:Name:Bot"..msg.sender.user_id) then 
