@@ -94,7 +94,7 @@ Token = Information.Token
 UserBot = Information.UserBot
 SNAK = Token:match("(%d+)")
 os.execute('sudo rm -fr .CallBack-Bot/'..SNAK)
-LuaTele = luatele.set_config{api_id=2692371,api_hash='fe85fff033dfe0f328aeb02b4f784930',session_name=SNAK,token=Token}
+LuaTele = luatele.set_config{api_id=4139599,api_hash='c4e7d051da03aa0f774b686ea3b993b2',session_name=SNAK,token=Token}
 function var(value)  
 print(serpent.block(value, {comment=false}))   
 end 
