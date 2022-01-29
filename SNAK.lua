@@ -2699,7 +2699,7 @@ UserInfousername = '@'..UserInfo.username..''
 else
 UserInfousername = 'لا يوجد'
 end
-Get_Is_Id = Redis:get(SNAK.."SNAK:Set:Id:Group"..msg_chat_id)
+Get_Is_Id = Redis:get(SNAK.."SNAK:Set:Id:Groups") or Redis:get(SNAK.."SNAK:Set:Id:Group"..msg_chat_id)
 if Redis:get(SNAK.."SNAK:Status:IdPhoto"..msg_chat_id) then
 if Get_Is_Id then
 local Get_Is_Id = Get_Is_Id:gsub('#AddMem',NumAdd) 
