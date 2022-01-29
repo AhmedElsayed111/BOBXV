@@ -8610,7 +8610,7 @@ local List = {
 - ɢᴀᴍᴇ ➥• #game .
 ]]}
 local Text_Rand = List[math.random(#List)]
-DevSNAK:set(David.."SNAK:GpIds:Text"..msg.chat_id_,Text_Rand)
+SNAK:set(SNAK.."SNAK:GpIds:Text"..msg.chat_id_,Text_Rand)
 ReplyStatus(msg,msg.sender_user_id_,"ReplyBy","✘︙ تم تغير كليشة الايدي")  
 end
 
