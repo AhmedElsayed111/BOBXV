@@ -6249,7 +6249,7 @@ Abs = math.random(1,200);
 local Text ='*◉︙تم اختيار الاغنيه لك*'
 keyboard = {}  
 keyboard.inline_keyboard = { 
-{{text="« مره أخري »",callback_data="/Song:"..msg.sender_user_id_}}
+{{text = '• ch .',url="t.me/UU_SNAK"}},
 }
 local MsgId = msg.id/2097152/0.5
 local MSGID = string.gsub(MsgId,'.0','')
