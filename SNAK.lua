@@ -2813,9 +2813,6 @@ return LuaTele.sendText(msg_chat_id,msg_id,
 '\n✘︙تفاعله : '..TotalMsgT..
 '*',"md",true) 
 end
-if text == 'رتبتي' then
-return LuaTele.sendText(msg_chat_id,msg_id,'\n✘︙رتبتك هي : '..msg.Name_Controller,"md",true)  
-end
 if text == 'انا مين' then
 if not Redis:get(SNAK.."SNAK:Status:IdPhoto"..msg_chat_id) then
 return false
@@ -2833,6 +2830,9 @@ data.inline_keyboard = {
 local msgg = msg_id/2097152/0.5
 https.request("https://api.telegram.org/bot"..Token.."/sendphoto?chat_id=" .. msg_chat_id .. "&photo="..photo.photos[1].sizes[#photo.photos[1].sizes].photo.remote.id.."&photo=".. URL.escape(news).."&reply_to_message_id="..msgg.."&parse_mode=markdown&disable_web_page_preview=true&reply_markup="..JSON.encode(data))
 end
+end
+if text == 'رتبتي' then
+return LuaTele.sendText(msg_chat_id,msg_id,'\n✘︙رتبتك هي : '..msg.Name_Controller,"md",true)  
 end
 if text == 'معلوماتي' or text == 'موقعي' then
 local UserInfo = LuaTele.getUser(msg.sender.user_id)
@@ -6302,7 +6302,7 @@ for k,v in pairs(zx.ok) do
 i = i + 1
 t = t..i.."-  "..v.." \n"
 end
-return LuaTele.sendText(msg_chat_id,msg_id, t..'*ٴ◉━━━━ « 𝙎𝙉𝘼𝙆 » ━━━━◉ٴ\n◉︙→ .[- 𝙎𝙊𝙐𝙍𝘾𝙀 𝙎𝙉𝘼𝙆 . ](t.me/uu_snak) ➤ ',"md",true)
+return LuaTele.sendText(msg_chat_id,msg_id, t..'◉ٴ≪━━━━ « 𝙎𝙉𝘼𝙆 » ━━━━◉ٴٴ*\n◉︙→ .[- 𝙎𝙊𝙐𝙍𝘾𝙀 𝙎𝙉𝘼𝙆 . ](t.me/uu_snak)➤ ',"md",true)
 end
 
 if text == "تعطيل الابراج" then
@@ -10538,7 +10538,7 @@ name = string.gsub(name,"👨‍💻","👩‍💻👩‍??👩‍‍💻👩‍
 name = string.gsub(name,"👨‍🔧","👩‍🔧👩‍🔧👩‍🔧👩‍🔧👩‍🔧👩‍🔧👨‍🔧👩‍🔧")
 name = string.gsub(name,"👩‍🍳","👨‍🍳👨‍🍳👨‍🍳👨‍🍳👨‍🍳👩‍🍳👨‍🍳👨‍🍳??‍🍳")
 name = string.gsub(name,"🧚‍♀","🧚‍♂🧚‍♂🧚‍♂🧚‍♂🧚‍♀🧚‍♂🧚‍♂")
-name = string.gsub(name,"🧜‍♂","🧜‍♀🧜‍♀🧜‍♀🧜‍♀??‍♀🧚‍♂🧜‍♀🧜‍♀🧜‍♀")
+name = string.gsub(name,"🧜‍♂","🧜‍♀🧜‍♀🧜‍♀🧜‍♀🧜‍♀🧚‍♂🧜‍♀🧜‍♀🧜‍♀")
 name = string.gsub(name,"🧝‍♂","🧝‍♀🧝‍♀🧝‍♀🧝‍♀🧝‍♀🧝‍♂🧝‍♀🧝‍♀🧝‍♀")
 name = string.gsub(name,"🙍‍♂️","🙎‍♂️🙎‍♂️🙎‍♂️🙎‍♂️🙎‍♂️🙍‍♂️🙎‍♂️🙎‍♂️🙎‍♂️")
 name = string.gsub(name,"🧖‍♂️","🧖‍♀️🧖‍♀️🧖‍♀️🧖‍♀️🧖‍♀️🧖‍♂️🧖‍♀️🧖‍♀️🧖‍♀️🧖‍♀️")
@@ -11564,7 +11564,7 @@ local reply_markup = LuaTele.replyMarkup{
 type = 'inline',
 data = {
 {
-{text = '𝟏 » { 👊 }', data = '/Mahibes1'}, {text = '𝟐 » { 👊 }', data = '/Mahibes2'}, 
+{text = '?? » { 👊 }', data = '/Mahibes1'}, {text = '𝟐 » { 👊 }', data = '/Mahibes2'}, 
 },
 {
 {text = '𝟑 » { 👊 }', data = '/Mahibes3'}, {text = '𝟒 » { 👊 }', data = '/Mahibes4'}, 
