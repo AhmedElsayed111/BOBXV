@@ -6244,8 +6244,159 @@ LuaTele.sendText(msg_chat_id,msg_id,listall,"md",true)
 end
 end
 end
+if text == "تعطيل الزخرفه" then
+if ChannelJoin(msg) == false then
+local reply_markup = LuaTele.replyMarkup{type = 'inline',data = {{{text = 'اضغط للاشتراك', url = 't.me/'..Redis:get(SNAK..'SNAK:Channel:Join')}, },}}
+return LuaTele.sendText(msg.chat_id,msg.id,'*\n◉︙عليك الاشتراك في قناة البوت لاستخدام الاوامر*',"md",false, false, false, false, reply_markup)
+end
+if not msg.Managers then
+return LuaTele.sendText(msg_chat_id,msg_id,'\n*◉︙هذا الامر يخص { '..Controller_Num(6)..' }* ',"md",true)  
+end
+if Redis:get(SNAK.."myzhrfa"..msg.chat_id)  then
+LuaTele.sendText(msg_chat_id,msg_id, '◉︙تم تعطيل امر الزخرفه مسبقا\n ✓',"md")
+else
+Redis:set(SNAK.."myzhrfa"..msg.chat_id,"true")
+LuaTele.sendText(msg_chat_id,msg_id, '◉︙تم تعطيل الزخرفه \n ✓',"md")
+end
+end
+if text == "تفعيل الزخرفه" then
+if ChannelJoin(msg) == false then
+local reply_markup = LuaTele.replyMarkup{type = 'inline',data = {{{text = 'اضغط للاشتراك', url = 't.me/'..Redis:get(SNAK..'SNAK:Channel:Join')}, },}}
+return LuaTele.sendText(msg.chat_id,msg.id,'*\n◉︙عليك الاشتراك في قناة البوت لاستخدام الاوامر*',"md",false, false, false, false, reply_markup)
+end
+if not msg.Managers then
+return LuaTele.sendText(msg_chat_id,msg_id,'\n*◉︙هذا الامر يخص { '..Controller_Num(6)..' }* ',"md",true)  
+end
+if not Redis:get(SNAK.."myzhrfa"..msg.chat_id)  then
+LuaTele.sendText(msg_chat_id,msg_id, '◉︙تم تفعيل امر الزخرفه مسبقا\n ✓',"md")
+else
+Redis:del(SNAK.."myzhrfa"..msg.chat_id)
+LuaTele.sendText(msg_chat_id,msg_id, '◉︙تم تفعيل امر الزخرفه\n ✓',"md")
+end
+end
+if text and text:match("^زخرفه (.*)$") and not Redis:get(SNAK.."myzhrfa"..msg.chat_id) then
+local TextZhrfa = text:match("^زخرفه (.*)$")
+zh = io.popen('curl -s "https://apiabs.ml/zrf.php?abs='..URL.escape(TextZhrfa)..'"'):read('*a')
+zx = JSON.decode(zh) 
+t = "\n◉︙قائمه الزخرفه \nٴ≪━━━━ - 𝙎𝙉𝘼𝙆 . ━━━━≫ٴ\n"
+i = 0
+for k,v in pairs(zx.ok) do
+i = i + 1
+t = t..i.."-  "..v.." \n"
+end
+return LuaTele.sendText(msg_chat_id,msg_id, t..'*ٴ≪━━━━ - 𝙎𝙉𝘼𝙆 . ━━━━≫ٴٴ*\n◉︙➫ .[- 𝙎𝙊𝙐𝙍𝘾𝙀 𝙎𝙉𝘼𝙆 . ](t.me/uu_snak)➤ ',"md",true)
+end
+
+if text == "تعطيل الابراج" then
+if ChannelJoin(msg) == false then
+local reply_markup = LuaTele.replyMarkup{type = 'inline',data = {{{text = 'اضغط للاشتراك', url = 't.me/'..Redis:get(SNAK..'SNAK:Channel:Join')}, },}}
+return LuaTele.sendText(msg.chat_id,msg.id,'*\n◉︙عليك الاشتراك في قناة البوت لاستخدام الاوامر*',"md",false, false, false, false, reply_markup)
+end
+if not msg.Managers then
+return LuaTele.sendText(msg_chat_id,msg_id,'\n*◉︙هذا الامر يخص { '..Controller_Num(6)..' }* ',"md",true)  
+end
+if Redis:get(SNAK.."brjj"..msg.chat_id)  then
+LuaTele.sendText(msg_chat_id,msg_id, '◉︙تم تعطيل امر الابراج مسبقا\n ✓',"md")
+else
+Redis:set(SNAK.."brjj"..msg.chat_id,"true")
+LuaTele.sendText(msg_chat_id,msg_id, '◉︙تم تعطيل الابراج \n ✓',"md")
+end
+end
+if text == "تفعيل الابراج" then
+if ChannelJoin(msg) == false then
+local reply_markup = LuaTele.replyMarkup{type = 'inline',data = {{{text = 'اضغط للاشتراك', url = 't.me/'..Redis:get(SNAK..'SNAK:Channel:Join')}, },}}
+return LuaTele.sendText(msg.chat_id,msg.id,'*\n◉︙عليك الاشتراك في قناة البوت لاستخدام الاوامر*',"md",false, false, false, false, reply_markup)
+end
+if not msg.Managers then
+return LuaTele.sendText(msg_chat_id,msg_id,'\n*◉︙هذا الامر يخص { '..Controller_Num(6)..' }* ',"md",true)  
+end
+if not Redis:get(SNAK.."brjj"..msg.chat_id)  then
+LuaTele.sendText(msg_chat_id,msg_id, '◉︙تم تفعيل امر الابراج مسبقا\n ✓',"md")
+else
+Redis:del(SNAK.."brjj"..msg.chat_id)
+LuaTele.sendText(msg_chat_id,msg_id, '◉︙تم تفعيل امر الابراج\n ✓',"md")
+end
+end
+if text and text:match("^برج (.*)$") and not Redis:get(SNAK.."brjj"..msg.chat_id) then
+local Textbrj = text:match("^برج (.*)$")
+gk = io.popen('curl -s "https://apiabs.ml/brg.php?brg='..URL.escape(Textbrj)..'"'):read('*a')
+br = JSON.decode(gk)
+LuaTele.sendText(msg_chat_id,msg_id, br.ok.abs)
+end 
+if text == "تعطيل معاني الاسماء" then
+if ChannelJoin(msg) == false then
+local reply_markup = LuaTele.replyMarkup{type = 'inline',data = {{{text = 'اضغط للاشتراك', url = 't.me/'..Redis:get(SNAK..'SNAK:Channel:Join')}, },}}
+return LuaTele.sendText(msg.chat_id,msg.id,'*\n◉︙عليك الاشتراك في قناة البوت لاستخدام الاوامر*',"md",false, false, false, false, reply_markup)
+end
+if not msg.Managers then
+return LuaTele.sendText(msg_chat_id,msg_id,'\n*◉︙هذا الامر يخص { '..Controller_Num(6)..' }* ',"md",true)  
+end
+if Redis:get(SNAK.."name:k"..msg.chat_id)  then
+LuaTele.sendText(msg_chat_id,msg_id, '◉︙تم تعطيل معاني الاسماء مسبقا\n ✓',"md")
+else
+Redis:set(SNAK.."name:k"..msg.chat_id,"true")
+LuaTele.sendText(msg_chat_id,msg_id, '◉︙تم تعطيل معاني الاسماء \n ✓',"md")
+end
+end
+if text == "تفعيل معاني الاسماء" then
+if ChannelJoin(msg) == false then
+local reply_markup = LuaTele.replyMarkup{type = 'inline',data = {{{text = 'اضغط للاشتراك', url = 't.me/'..Redis:get(SNAK..'SNAK:Channel:Join')}, },}}
+return LuaTele.sendText(msg.chat_id,msg.id,'*\n◉︙عليك الاشتراك في قناة البوت لاستخدام الاوامر*',"md",false, false, false, false, reply_markup)
+end
+if not msg.Managers then
+return LuaTele.sendText(msg_chat_id,msg_id,'\n*◉︙هذا الامر يخص { '..Controller_Num(6)..' }* ',"md",true)  
+end
+if not Redis:get(SNAK.."name:k"..msg.chat_id)  then
+LuaTele.sendText(msg_chat_id,msg_id, '◉︙تم تفعيل معاني الاسماء مسبقا\n ✓',"md")
+else
+Redis:del(SNAK.."name:k"..msg.chat_id)
+LuaTele.sendText(msg_chat_id,msg_id, '◉︙تم تفعيل امر معاني الاسماء\n ✓',"md")
+end
+end
+if text and text:match("^معنى اسم (.*)$") and not Redis:get(SNAK.."name:k"..msg.chat_id) then 
+local TextMean = text:match("^معنى اسم (.*)$")
+UrlMean = io.popen('curl -s "https://apiabs.ml/Mean.php?Abs='..URL.escape(TextMean)..'"'):read('*a')
+Mean = JSON.decode(UrlMean) 
+LuaTele.sendText(msg_chat_id,msg_id, Mean.ok.abs)
+end  
+if text == "تعطيل حساب العمر" then
+if ChannelJoin(msg) == false then
+local reply_markup = LuaTele.replyMarkup{type = 'inline',data = {{{text = Redis:get(SNAK..'SNAK:Channel:Join:Name'), url = 't.me/'..Redis:get(SNAK..'SNAK:Channel:Join')}, },}}
+return LuaTele.sendText(msg.chat_id,msg.id,'*\n◉︙عليك الاشتراك في قناة البوت لأستخدام الاوامر*',"md",false, false, false, false, reply_markup)
+end
+if not msg.Managers then
+return LuaTele.sendText(msg_chat_id,msg_id,'\n*◉︙هذا الامر يخص { '..Controller_Num(6)..' }* ',"md",true)  
+end
+if Redis:get(SNAK.."calculate"..msg.chat_id)  then
+LuaTele.sendText(msg_chat_id,msg_id, '◉︙تم تعطيل امر حساب العمر مسبقا\n ✓',"md")
+else
+Redis:set(SNAK.."calculate"..msg.chat_id,"true")
+LuaTele.sendText(msg_chat_id,msg_id, '◉︙تم تعطيل حساب العمر \n ✓',"md")
+end
+end
+if text == "تفعيل حساب العمر" then
+if ChannelJoin(msg) == false then
+local reply_markup = LuaTele.replyMarkup{type = 'inline',data = {{{text = Redis:get(SNAK..'SNAK:Channel:Join:Name'), url = 't.me/'..Redis:get(SNAK..'SNAK:Channel:Join')}, },}}
+return LuaTele.sendText(msg.chat_id,msg.id,'*\n◉︙عليك الاشتراك في قناة البوت لأستخدام الاوامر*',"md",false, false, false, false, reply_markup)
+end
+if not msg.Managers then
+return LuaTele.sendText(msg_chat_id,msg_id,'\n*◉︙هذا الامر يخص { '..Controller_Num(6)..' }* ',"md",true)  
+end
+if not Redis:get(SNAK.."calculate"..msg.chat_id)  then
+LuaTele.sendText(msg_chat_id,msg_id, '◉︙تم تفعيل امر حساب العمر مسبقا\n ✓',"md")
+else
+Redis:del(SNAK.."calculate"..msg.chat_id)
+LuaTele.sendText(msg_chat_id,msg_id, '◉︙تم تفعيل امر حساب العمر\n ✓',"md")
+end
+end
+if text and text:match("^احسب (.*)$") and not Redis:get(SNAK.."calculate"..msg.chat_id) then
+local Textage = text:match("^احسب (.*)$")
+ge = io.popen('curl -s "https://apiabs.ml/age.php?age='..URL.escape(Textage)..'"'):read('*a')
+ag = JSON.decode(ge)
+LuaTele.sendText(msg_chat_id,msg_id, ag.ok.abs)
+end  
 if text == "غنيلي" or text == "غني" then 
-Abs = math.random(2,100);
+Abs = math.random(1,200);
 local Text ='*◉︙تم اختيار الاغنيه لك*'
 local MsgId = msg.id/2097152/0.5
 local MSGID = string.gsub(MsgId,'.0','')
@@ -6258,12 +6409,12 @@ local MsgId = msg.id/2097152/0.5
 local MSGID = string.gsub(MsgId,'.0','')
 https.request("https://api.telegram.org/bot"..Token..'/sendVoice?chat_id=' .. msg.chat_id .. '&voice=https://t.me/MemzDavid/'..Abs..'&caption=' .. URL.escape(Text).."&reply_to_message_id="..MsgId.."&parse_mode=markdown") 
 end
-if text == "فيلم" or text "افلام" or text == "فلم" then
+if text == "فلم" or text == "افلام" then 
 Abs = math.random(2,140); 
 local Text ='*◉︙تم اختيار الفلم لك*'
 local MsgId = msg.id/2097152/0.5
 local MSGID = string.gsub(MsgId,'.0','')
-https.request("https://api.telegram.org/bot"..Token..'/sendphotochat_id=' .. msg.chat_id .. '&photo=https://t.me/XQCNH/'..Abs..'&caption=' .. URL.escape(Text).."&reply_to_message_id="..MsgId.."&parse_mode=markdown") 
+https.request("https://api.telegram.org/bot"..Token..'/sendphoto?chat_id=' .. msg.chat_id .. '&photo=https://t.me/XQCNH/'..Abs..'&caption=' .. URL.escape(Text).."&reply_to_message_id="..MsgId.."&parse_mode=markdown") 
 end
 if text == "انمي" or text == "انميي" then 
 Abs = math.random(2,140); 
