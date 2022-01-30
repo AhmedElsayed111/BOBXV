@@ -6331,14 +6331,14 @@ end
 if not msg.Managers then
 return LuaTele.sendText(msg_chat_id,msg_id,'\n*◉︙هذا الامر يخص { '..Controller_Num(6)..' }* ',"md",true)  
 end
-if Redis:get(SNAK.."Nsba"..msg.chat_id)  then
+if Redis:get(SNAK.."amrthshesh"..msg.chat_id)  then
 LuaTele.sendText(msg_chat_id,msg_id, '◉︙تم تعطيل اوامر النسب مسبقاً\n ✓',"md")
 else
-Redis:set(SNAK.."Nsba"..msg.chat_id,"true")
+Redis:set(SNAK.."amrthshesh"..msg.chat_id,"true")
 LuaTele.sendText(msg_chat_id,msg_id, '◉︙تم تعطيل اوامر النسب \n ✓',"md")
 end
 end
-if text and (text == "تفعيل اوامر النسب" or text == "تفعيل نسبه الحب" or text == "تفعيل نسبه الكره" or text == "تفعيل نسبه الرجوله" or text == "تفعيل نسبه الانوثه" or text == "تفعيل نسبه الغباء") and Manager(msg) and ChCheck(msg) then
+if text and (text == "تفعيل اوامر النسب" or text == "تفعيل نسبه الحب" or text == "تفعيل نسبه الكره" or text == "تفعيل نسبه الرجوله" or text == "تفعيل نسبه الانوثه" or text == "تفعيل نسبه الغباء") then
 if ChannelJoin(msg) == false then
 local reply_markup = LuaTele.replyMarkup{type = 'inline',data = {{{text = Redis:get(SNAK..'SNAK:Channel:Join:Name'), url = 't.me/'..Redis:get(SNAK..'SNAK:Channel:Join')}, },}}
 return LuaTele.sendText(msg.chat_id,msg.id,'*\n◉︙عليك الاشتراك في قناة البوت لأستخدام الاوامر*',"md",false, false, false, false, reply_markup)
@@ -6346,10 +6346,10 @@ end
 if not msg.Managers then
 return LuaTele.sendText(msg_chat_id,msg_id,'\n*◉︙هذا الامر يخص { '..Controller_Num(6)..' }* ',"md",true)  
 end
-if not Redis:get(SNAK.."Nsba"..msg.chat_id)  then
+if not Redis:get(SNAK.."amrthshesh"..msg.chat_id)  then
 LuaTele.sendText(msg_chat_id,msg_id, '◉︙تم تفعيل اوامر النسب مسبقاً\n ✓',"md")
 else
-Redis:del(SNAK.."Nsba"..msg.chat_id)
+Redis:del(SNAK.."amrthshesh"..msg.chat_id)
 LuaTele.sendText(msg_chat_id,msg_id, '◉︙تم تفعيل اوامر النسب\n ✓',"md")
 end
 end
@@ -6376,7 +6376,7 @@ end
 if text == "نسبه الغباء" or text == "نسبه الغباء" and msg.reply_to_message_id ~= 0 then
 if ChannelJoin(msg) == false then
 local reply_markup = LuaTele.replyMarkup{type = 'inline',data = {{{text = 'اضغط للاشتراك', url = 't.me/'..Redis:get(SNAK..'SNAK:Channel:Join')}, },}}
-return LuaTele.sendText(msg.chat_id,msg.id,'*\n✯︙عليك الاشتراك في قناة البوت لاستخدام الاوامر*',"md",false, false, false, false, reply_markup)
+return LuaTele.sendText(msg.chat_id,msg.id,'*\n◉︙عليك الاشتراك في قناة البوت لاستخدام الاوامر*',"md",false, false, false, false, reply_markup)
 end
 if not Redis:get(SNAK.."amrthshesh"..msg.chat_id) then    
 Redis:set(SNAK..":"..msg.sender.user_id..":lov_Bottts"..msg.chat_id,"sendlove")
