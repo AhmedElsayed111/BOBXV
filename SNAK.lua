@@ -6323,6 +6323,155 @@ gk = io.popen('curl -s "https://apiabs.ml/brg.php?brg='..URL.escape(Textbrj)..'"
 br = JSON.decode(gk)
 LuaTele.sendText(msg_chat_id,msg_id, br.ok.abs)
 end 
+if text and (text == "تعطيل اوامر النسب" or text == "تعطيل نسبه الحب" or text == "تعطيل نسبه الكره" or text == "تعطيل نسبه الرجوله" or text == "تعطيل نسبه الانوثه" or text == "تعطيل نسبه الغباء") and Manager(msg) and ChCheck(msg) then
+if ChannelJoin(msg) == false then
+local reply_markup = LuaTele.replyMarkup{type = 'inline',data = {{{text = Redis:get(SNAK..'SNAK:Channel:Join:Name'), url = 't.me/'..Redis:get(SNAK..'SNAK:Channel:Join')}, },}}
+return LuaTele.sendText(msg.chat_id,msg.id,'*\n◉︙عليك الاشتراك في قناة البوت لأستخدام الاوامر*',"md",false, false, false, false, reply_markup)
+end
+if not msg.Managers then
+return LuaTele.sendText(msg_chat_id,msg_id,'\n*◉︙هذا الامر يخص { '..Controller_Num(6)..' }* ',"md",true)  
+end
+if Redis:get(SNAK.."Nsba"..msg.chat_id)  then
+LuaTele.sendText(msg_chat_id,msg_id, '◉︙تم تعطيل اوامر النسب مسبقاً\n ✓',"md")
+else
+Redis:set(SNAK.."Nsba"..msg.chat_id,"true")
+LuaTele.sendText(msg_chat_id,msg_id, '◉︙تم تعطيل اوامر النسب \n ✓',"md")
+end
+end
+if text and (text == "تفعيل اوامر النسب" or text == "تفعيل نسبه الحب" or text == "تفعيل نسبه الكره" or text == "تفعيل نسبه الرجوله" or text == "تفعيل نسبه الانوثه" or text == "تفعيل نسبه الغباء") and Manager(msg) and ChCheck(msg) then
+if ChannelJoin(msg) == false then
+local reply_markup = LuaTele.replyMarkup{type = 'inline',data = {{{text = Redis:get(SNAK..'SNAK:Channel:Join:Name'), url = 't.me/'..Redis:get(SNAK..'SNAK:Channel:Join')}, },}}
+return LuaTele.sendText(msg.chat_id,msg.id,'*\n◉︙عليك الاشتراك في قناة البوت لأستخدام الاوامر*',"md",false, false, false, false, reply_markup)
+end
+if not msg.Managers then
+return LuaTele.sendText(msg_chat_id,msg_id,'\n*◉︙هذا الامر يخص { '..Controller_Num(6)..' }* ',"md",true)  
+end
+if not Redis:get(SNAK.."Nsba"..msg.chat_id)  then
+LuaTele.sendText(msg_chat_id,msg_id, '◉︙تم تفعيل اوامر النسب مسبقاً\n ✓',"md")
+else
+Redis:del(SNAK.."Nsba"..msg.chat_id)
+LuaTele.sendText(msg_chat_id,msg_id, '◉︙تم تفعيل اوامر النسب\n ✓',"md")
+end
+end
+if text == "نسبه الحب" or text == "نسبه حب" and msg.reply_to_message_id ~= 0 then
+if ChannelJoin(msg) == false then
+local reply_markup = LuaTele.replyMarkup{type = 'inline',data = {{{text = 'اضغط للاشتراك', url = 't.me/'..Redis:get(SNAK..'SNAK:Channel:Join')}, },}}
+return LuaTele.sendText(msg.chat_id,msg.id,'*\n◉︙عليك الاشتراك في قناة البوت لاستخدام الاوامر*',"md",false, false, false, false, reply_markup)
+end
+if not Redis:get(SNAK.."amrthshesh"..msg.chat_id) then    
+Redis:set(SNAK..":"..msg.sender.user_id..":lov_Bots"..msg.chat_id,"sendlove")
+hggg = '◉︙الان ارسل اسمك واسم الشخص الثاني : مثال ← معتز و روز :'
+LuaTele.sendText(msg_chat_id,msg_id,hggg) 
+return false
+end
+end
+if Redis:get(SNAK..":"..msg.sender.user_id..":lov_Bots"..msg.chat_id) == "sendlove" then
+num = {"10","20","30","35","75","34","66","82","23","19","55","80","63","32","27","89","99","98","79","100","8","3","6","0",};
+sendnum = num[math.random(#num)]
+local tttttt = '⌯: اليك النتائج الخـاصة :\n\n⌯: نسبة الحب بيـن : *'..text..'* '..sendnum..'%'
+LuaTele.sendText(msg_chat_id,msg_id,tttttt) 
+Redis:del(SNAK..":"..msg.sender.user_id..":lov_Bots"..msg.chat_id)
+end
+
+if text == "نسبه الغباء" or text == "نسبه الغباء" and msg.reply_to_message_id ~= 0 then
+if ChannelJoin(msg) == false then
+local reply_markup = LuaTele.replyMarkup{type = 'inline',data = {{{text = 'اضغط للاشتراك', url = 't.me/'..Redis:get(SNAK..'SNAK:Channel:Join')}, },}}
+return LuaTele.sendText(msg.chat_id,msg.id,'*\n✯︙عليك الاشتراك في قناة البوت لاستخدام الاوامر*',"md",false, false, false, false, reply_markup)
+end
+if not Redis:get(SNAK.."amrthshesh"..msg.chat_id) then    
+Redis:set(SNAK..":"..msg.sender.user_id..":lov_Bottts"..msg.chat_id,"sendlove")
+hggg = '◉︙الان ارسل اسم الشخص :'
+LuaTele.sendText(msg_chat_id,msg_id,hggg) 
+return false
+end
+end
+if Redis:get(SNAK..":"..msg.sender.user_id..":lov_Bottts"..msg.chat_id) == "sendlove" then
+num = {"10","20","30","35","75","34","66","82","23","19","55","80","63","32","27","89","99","98","79","100","8","3","6","0",};
+sendnum = num[math.random(#num)]
+local tttttt = '⌯: اليك النتائج الخـاصة :\n\n⌯: نسبة الغباء  : *'..text..'* '..sendnum..'%'
+LuaTele.sendText(msg_chat_id,msg_id,tttttt) 
+Redis:del(SNAK..":"..msg.sender.user_id..":lov_Bottts"..msg.chat_id)
+end
+
+if text == "نسبه الذكاء" or text == "نسبه الذكاء" and msg.reply_to_message_id ~= 0 then
+if ChannelJoin(msg) == false then
+local reply_markup = LuaTele.replyMarkup{type = 'inline',data = {{{text = 'اضغط للاشتراك', url = 't.me/'..Redis:get(SNAK..'SNAK:Channel:Join')}, },}}
+return LuaTele.sendText(msg.chat_id,msg.id,'*\n◉︙عليك الاشتراك في قناة البوت لاستخدام الاوامر*',"md",false, false, false, false, reply_markup)
+end
+if not Redis:get(SNAK.."amrthshesh"..msg.chat_id) then    
+Redis:set(SNAK..":"..msg.sender.user_id..":lov_Botttuus"..msg.chat_id,"sendlove")
+hggg = '◉︙الان ارسل اسم الشخص :'
+LuaTele.sendText(msg_chat_id,msg_id,hggg) 
+return false
+end
+end
+if Redis:get(SNAK..":"..msg.sender.user_id..":lov_Botttuus"..msg.chat_id) == "sendlove" then
+num = {"10","20","30","35","75","34","66","82","23","19","55","80","63","32","27","89","99","98","79","100","8","3","6","0",};
+sendnum = num[math.random(#num)]
+local tttttt = '⌯: اليك النتائج الخـاصة :\n\n⌯: نسبة الذكاء  : *'..text..'* '..sendnum..'%'
+LuaTele.sendText(msg_chat_id,msg_id,tttttt) 
+Redis:del(SNAK..":"..msg.sender.user_id..":lov_Botttuus"..msg.chat_id)
+end
+
+if text == "نسبه الكره" or text == "نسبه كره" and msg.reply_to_message_id ~= 0 then
+if ChannelJoin(msg) == false then
+local reply_markup = LuaTele.replyMarkup{type = 'inline',data = {{{text = 'اضغط للاشتراك', url = 't.me/'..Redis:get(SNAK..'SNAK:Channel:Join')}, },}}
+return LuaTele.sendText(msg.chat_id,msg.id,'*\n◉︙عليك الاشتراك في قناة البوت لاستخدام الاوامر*',"md",false, false, false, false, reply_markup)
+end
+if not Redis:get(SNAK.."amrthshesh"..msg.chat_id) then    
+Redis:set(SNAK..":"..msg.sender.user_id..":krh_Bots"..msg.chat_id,"sendkrhe")
+hggg = '◉︙الان ارسل اسمك واسم الشخص الثاني : مثال ← معتز و روز :'
+LuaTele.sendText(msg_chat_id,msg_id,hggg) 
+return false
+end
+end
+if text and Redis:get(SNAK..":"..msg.sender.user_id..":krh_Bots"..msg.chat_id) == "sendkrhe" then
+num = {"10","20","30","35","75","34","66","82","23","19","55","80","63","32","27","89","99","98","79","100","8","3","6","0",};
+sendnum = num[math.random(#num)]
+local tttttt = '⌯ اليك النتائج الخـاصة :\n\n⌯ نسبه الكرة : *'..text..'* '..sendnum..'%'
+LuaTele.sendText(msg_chat_id,msg_id,tttttt) 
+Redis:del(SNAK..":"..msg.sender.user_id..":krh_Bots"..msg.chat_id)
+end
+
+if text == "نسبه الرجوله" or text == "نسبه الرجوله" and msg.reply_to_message_id ~= 0 then
+if ChannelJoin(msg) == false then
+local reply_markup = LuaTele.replyMarkup{type = 'inline',data = {{{text = 'اضغط للاشتراك', url = 't.me/'..Redis:get(SNAK..'SNAK:Channel:Join')}, },}}
+return LuaTele.sendText(msg.chat_id,msg.id,'*\n✯︙عليك الاشتراك في قناة البوت لاستخدام الاوامر*',"md",false, false, false, false, reply_markup)
+end
+if not Redis:get(SNAK.."amrthshesh"..msg.chat_id) then    
+Redis:set(SNAK..":"..msg.sender.user_id..":rjo_Bots"..msg.chat_id,"sendrjoe")
+hggg = '◉︙الان ارسل اسم الشخص :'
+LuaTele.sendText(msg_chat_id,msg_id,hggg) 
+return false
+end
+end
+if text and text ~="نسبه الرجوله" and Redis:get(SNAK..":"..msg.sender.user_id..":rjo_Bots"..msg.chat_id) == "sendrjoe" then
+numj = {"10","20","30","35","75","34","66","82","23","19","55","80","63","32","27","89","99","98","79","100","8","3","6","0",};
+sendnuj = numj[math.random(#numj)]
+local tttttt = '⌯: اليك النتائج الخـاصة :\n\n⌯:  نسبة الرجوله لـ : *'..text..'* '..sendnuj..'%'
+LuaTele.sendText(msg_chat_id,msg_id,tttttt) 
+Redis:del(SNAK..":"..msg.sender.user_id..":rjo_Bots"..msg.chat_id)
+end
+
+if text == "نسبه الانوثه" or text == "نسبه انوثه" and msg.reply_to_message_id ~= 0 then
+if ChannelJoin(msg) == false then
+local reply_markup = LuaTele.replyMarkup{type = 'inline',data = {{{text = 'اضغط للاشتراك', url = 't.me/'..Redis:get(SNAK..'SNAK:Channel:Join')}, },}}
+return LuaTele.sendText(msg.chat_id,msg.id,'*\n◉︙عليك الاشتراك في قناة البوت لاستخدام الاوامر*',"md",false, false, false, false, reply_markup)
+end
+if not Redis:get(SNAK.."amrthshesh"..msg.chat_id) then    
+Redis:set(SNAK..":"..msg.sender.user_id..":ano_Bots"..msg.chat_id,"sendanoe")
+hggg = '◉︙الان ارسل اسم الشخص :'
+LuaTele.sendText(msg_chat_id,msg_id,hggg) 
+return false
+end
+end
+if text and text ~="نسبه الانوثه" and Redis:get(SNAK..":"..msg.sender.user_id..":ano_Bots"..msg.chat_id) == "sendanoe" then
+numj = {"10","20","30","35","75","34","66","82","23","19","55","80","63","32","27","89","99","98","79","100","8","3","6","0",};
+sendnuj = numj[math.random(#numj)]
+local tttttt = '⌯: اليك النتائج الخـاصة :\n\n⌯:  نسبه الانوثة لـ : *'..text..'* '..sendnuj..'%'
+LuaTele.sendText(msg_chat_id,msg_id,tttttt) 
+Redis:del(SNAK..":"..msg.sender.user_id..":ano_Bots"..msg.chat_id)
+end
 if text == "تعطيل معاني الاسماء" then
 if ChannelJoin(msg) == false then
 local reply_markup = LuaTele.replyMarkup{type = 'inline',data = {{{text = 'اضغط للاشتراك', url = 't.me/'..Redis:get(SNAK..'SNAK:Channel:Join')}, },}}
