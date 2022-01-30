@@ -8615,10 +8615,11 @@ local List = {
 - ᴅᴇᴛᴀɪʟs ➥• #auto . 
 - ɢᴀᴍᴇ ➥• #game .
 ]]}
-local Text_Rand = List[math.random(#List)]
-SNAK:set(SNAK.."SNAK:GpIds:Text"..msg.chat_id_,Text_Rand)
-ReplyStatus(msg,msg.sender_user_id_,"ReplyBy","✘︙ تم تغير كليشة الايدي")  
-end  
+local Text_Rand = List[math.random(#List)] 
+Redis:del(SNAK.."SNAK:Redis:Id:Groups"..msg.chat_id..""..msg.sender.user_id) 
+Redis:set(SNAK.."SNAK:Set:Id:Groups",text:match("(.*)"))
+LuaTele.sendText(msg_chat_id,msg_id,'✘︙تم تغير كليشة الايدي',"md",true)  
+end 
 if text == 'تعين الايدي عام' then
 if not msg.ControllerBot then 
 return LuaTele.sendText(msg_chat_id,msg_id,'\n*✘︙هاذا الامر يخص { '..Controller_Num(1)..' }* ',"md",true)  
