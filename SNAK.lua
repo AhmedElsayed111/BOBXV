@@ -6278,13 +6278,13 @@ if text and text:match("^زخرفه (.*)$") and not Redis:get(SNAK.."myzhrfa"..m
 local TextZhrfa = text:match("^زخرفه (.*)$")
 zh = io.popen('curl -s "https://apiabs.ml/zrf.php?abs='..URL.escape(TextZhrfa)..'"'):read('*a')
 zx = JSON.decode(zh) 
-t = "\n◉︙قائمه الزخرفه \nٴ◉━━━━ « 𝙎𝙉𝘼𝙆 » ━━━━◉ٴ\n"
+t = "\n◉︙قائمه الزخرفه \nٴ≪━━━━ - 𝙎𝙉𝘼𝙆 . ━━━━≫ٴ\n"
 i = 0
 for k,v in pairs(zx.ok) do
 i = i + 1
 t = t..i.."-  "..v.." \n"
 end
-return LuaTele.sendText(msg_chat_id,msg_id, t..'◉ٴٴ≪━━━━ « 𝙎𝙉𝘼𝙆 » ━━━━◉ٴ*\n◉︙→ .[- 𝙎𝙊𝙐𝙍𝘾𝙀 𝙎𝙉𝘼𝙆 . ](t.me/uu_snak)➤ ',"md",true)
+return LuaTele.sendText(msg_chat_id,msg_id, t..'*ٴ≪━━━━ - 𝙎𝙉𝘼𝙆 . ━━━━≫ٴٴ*\n◉︙➫ .[- 𝙎𝙊𝙐𝙍𝘾𝙀 𝙎𝙉𝘼𝙆 . ](t.me/uu_snak)➤ ',"md",true)
 end
 
 if text == "تعطيل الابراج" then
