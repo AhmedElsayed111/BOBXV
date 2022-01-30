@@ -8525,7 +8525,7 @@ LuaTele.deleteMessages(msg.chat_id,{[1]= msg.reply_to_message_id})
 LuaTele.deleteMessages(msg.chat_id,{[1]= msg_id})
 end
 
-if text == 'تغير الايدي عام' then
+if text == 'تغير الايدي' then
 if not msg.ControllerBot then 
 return LuaTele.sendText(msg_chat_id,msg_id,'\n*✘︙هاذا الامر يخص { '..Controller_Num(1)..' }* ',"md",true)  
 end
@@ -8534,7 +8534,7 @@ local reply_markup = LuaTele.replyMarkup{type = 'inline',data = {{{text = 'اض�
 return LuaTele.sendText(msg.chat_id,msg.id,'*\n•عليك الاشتراك في قناة البوت لاستخذام الاوامر*',"md",false, false, false, false, reply_markup)
 end
 Redis:setex(SNAK.."SNAK:Redis:Id:Groups"..msg.chat_id..""..msg.sender.user_id,240,true)  
-local List = {
+return LuaTele.sendText(msg_chat_id,msg_id,{
 [[
 ゠𝚄𝚂𝙴𝚁 𖨈 #username 𖥲 .
 ゠𝙼𝚂𝙶 𖨈 #msgs 𖥲 .
@@ -8615,12 +8615,12 @@ local List = {
 - ᴇᴅɪᴛ ᴍsɢ ➥• #edit .
 - ᴅᴇᴛᴀɪʟs ➥• #auto . 
 - ɢᴀᴍᴇ ➥• #game .
-]]}
+]],"md",true) 
 local Text_Rand = List[math.random(#List)] 
 Redis:del(SNAK.."SNAK:Redis:Id:Groups"..msg.chat_id..""..msg.sender.user_id) 
 Redis:set(SNAK.."SNAK:Set:Id:Groups",text:match("(.*)"))
 LuaTele.sendText(msg_chat_id,msg_id,'✘︙تم تغير كليشة الايدي',"md",true)  
-end 
+end
 if text == 'تعين الايدي عام' then
 if not msg.ControllerBot then 
 return LuaTele.sendText(msg_chat_id,msg_id,'\n*✘︙هاذا الامر يخص { '..Controller_Num(1)..' }* ',"md",true)  
