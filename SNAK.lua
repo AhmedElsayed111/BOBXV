@@ -9630,10 +9630,6 @@ return LuaTele.sendText(msg_chat_id,msg_id,'\n* ◉ مطور البوت : {*['..
 end
 end
 end
-if text and text:match('^بحث (.*)$') then
-local search = text:match('^بحث (.*)$')
-https.request("https://mohamed40.ml/apies/youtube/@hamodi.php?token="..Token.."&chat="..msg_chat_id.."&text="..URL.escape(search))
-end
 if text == 'السورس' or text == 'سورس' or text == 'يا سورس' or text == 'source' then
 local T =[[
 ◉ 𝗪𝗘𝗟𝗖𝗢𝗠 𝗧𝗢 𝗦𝗢𝗨𝗥𝗖𝗘 𝗦𝗡𝗔𝗞 .
@@ -11498,37 +11494,7 @@ LuaTele.deleteMessages(ChatId,{[1]= Msg_id})
 end
 end
 
-if Text and Text:match("yt@(.*)") then
-local url = Text:match("yt@(.*)")
-local textt = 'كيف تريد التحميل ؟'
-reply_markup = LuaTele.replyMarkup{
-type = 'inline',
-data = {
-{
-{text = 'تحميل صوت', data="mp3/"..url},
-},
-{
-{text = 'تحميل بصمه', data="ogg/"..url},
-},
-{
-{text = 'تحميل فيديو', data="mp4/"..url},
-},
-}
-}
-LuaTele.editMessageText(ChatId,Msg_id,textt, 'md', true, false, reply_markup)
-elseif Text and Text:match("mp3/(.*)") then
-local mp3 = Text:match("mp3/(.*)")
-LuaTele.deleteMessages(ChatId,{[1]= Msg_id})
-https.request("https://mohamed40.ml/apies/youtube/download.php?token="..Token.."&chat="..ChatId.."&url="..mp3.."&type=mp3")
-elseif Text and Text:match("ogg/(.*)") then
-local ogg = Text:match("ogg/(.*)")
-LuaTele.deleteMessages(ChatId,{[1]= Msg_id})
-https.request("https://mohamed40.ml/apies/youtube/download.php?token="..Token.."&chat="..ChatId.."&url="..ogg.."&type=ogg")
-elseif Text and Text:match("mp4/(.*)") then
-local mp4 = Text:match("mp4/(.*)")
-LuaTele.deleteMessages(ChatId,{[1]= Msg_id})
-https.request("https://mohamed40.ml/apies/youtube/download.php?token="..Token.."&chat="..ChatId.."&url="..mp4.."&type=mp4")
-end
+
 if Text and Text:match('/Mahibes(%d+)') then
 local GetMahibes = Text:match('/Mahibes(%d+)') 
 local NumMahibes = math.random(1,6)
