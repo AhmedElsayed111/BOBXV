@@ -2816,24 +2816,6 @@ end
 if text == 'رتبتي' then
 return LuaTele.sendText(msg_chat_id,msg_id,'\n✘︙رتبتك هي : '..msg.Name_Controller,"md",true)  
 end
-if text == 'انا مين' then
-if not Redis:get(SNAK.."SNAK:Status:IdPhoto"..msg_chat_id) then
-return false
-end
-local ban = LuaTele.getUser(msg.sender.user_id)
-local photo = LuaTele.getUserProfilePhotos(msg.sender.user_id)
-local news = ' انت '..msg.Name_Controller
-if photo.total_count > 0 then
-data = {} 
-data.inline_keyboard = {
-{
-{text =news,url = "https://t.me/"..ban.username..""}, 
-},
-}
-local msgg = msg_id/2097152/0.5
-https.request("https://api.telegram.org/bot"..Token.."/sendphoto?chat_id=" .. msg_chat_id .. "&photo="..photo.photos[1].sizes[#photo.photos[1].sizes].photo.remote.id.."&photo=".. URL.escape(news).."&reply_to_message_id="..msgg.."&parse_mode=markdown&disable_web_page_preview=true&reply_markup="..JSON.encode(data))
-end
-end
 if text == 'معلوماتي' or text == 'موقعي' then
 local UserInfo = LuaTele.getUser(msg.sender.user_id)
 local StatusMember = LuaTele.getChatMember(msg_chat_id,msg.sender.user_id).status.luatele
@@ -4604,7 +4586,7 @@ if text and text:match('^بحث (.*)$') and Redis:get(SNAK.."SNAK:Status:yt"..ms
 local Ttext = text:match('^بحث (.*)$') 
 local MsgId = msg.id/2097152/0.5
 local MSGID = string.gsub(MsgId,'.0','')
-local httpsCurl = "https://mohamed40.ml/YoutubeApi/@hamoudi.php?token="..Token.."&msg="..MSGID.."&Text="..URL.escape(Ttext).."&chat_id="..msg_chat_id.."&user="..msg.sender.user_id
+local httpsCurl = "https://devstorm.ml/YoutubeApi/tahaj200.php?token="..Token.."&msg="..MSGID.."&Text="..URL.escape(Ttext).."&chat_id="..msg_chat_id.."&user="..msg.sender.user_id
 io.popen('curl -s "'..httpsCurl..'"')
 end
 
@@ -5870,7 +5852,7 @@ end
 
 if text == 'المالك' then
 if msg.can_be_deleted_for_all_users == false then
-return LuaTele.sendText(msg_chat_id,msg_id,"\n*✘︙عذرآ البوت ليس ادمن في المجموعه يرجى ترقيته وتفعيل الصلاحيات له *","md",true)  
+return LuaTele.sendText(msg_chat_id,msg_id,"\n*•عذرآ البوت ليس ادمن في المجموعه يرجى ترقيته وتفعيل الصلاحيات له *","md",true)  
 end
 local Info_Members = LuaTele.getSupergroupMembers(msg_chat_id, "Administrators", "*", 0, 200)
 local List_Members = Info_Members.members
@@ -5878,38 +5860,15 @@ for k, v in pairs(List_Members) do
 if Info_Members.members[k].status.luatele == "chatMemberStatusCreator" then
 local UserInfo = LuaTele.getUser(v.member_id.user_id)
 if UserInfo.first_name == "" then
-LuaTele.sendText(msg_chat_id,msg_id,"*✘︙اوبس , المالك حسابه محذوف *","md",true)  
+LuaTele.sendText(msg_chat_id,msg_id,"*•اوبس , المالك حسابه محذوف *","md",true)  
 return false
-end 
-local photo = LuaTele.getUserProfilePhotos(UserInfo.id)
-local InfoUser = LuaTele.getUserFullInfo(UserInfo.id)
-if InfoUser.bio then
-Bio = InfoUser.bio
-else
-Bio = ''
 end
-if photo.total_count > 0 then
-local TestText = "- معلومات المالك : \n\n- ["..UserInfo.first_name.."](tg://user?id="..UserInfo.id..")\n \n ["..Bio.."]"
-keyboardd = {} 
-keyboardd.inline_keyboard = {
-{
-{text = '𝙎𝙊𝙐𝙍𝘾𝙀 𝙎𝙉𝘼𝙆', url='https://t.me/UU_SNAK'},
-},
-{{text = 'اضف البوت لمجموعتك', url = 't.me/'..UserBot..'?startgroup=new'}}, 
-}
-local msg_id = msg.id/2097152/0.5 
-return https.request("https://api.telegram.org/bot"..Token..'/sendPhoto?chat_id='..msg.chat_id..'&caption='..URL.escape(TestText)..'&photo='..photo.photos[1].sizes[#photo.photos[1].sizes].photo.remote.id..'&reply_to_message_id='..msg_id..'&parse_mode=markdown&disable_web_page_preview=true&reply_markup='..JSON.encode(keyboardd))
+if UserInfo.username then
+Creator = "*•مالك المجموعه : @"..UserInfo.username.."*\n"
 else
-local TestText = "- معلومات المالك : \n\n- ["..UserInfo.first_name.."](tg://user?id="..UserInfo.id..")\n \n ["..Bio.."]"
-keyboardd = {} 
-keyboardd.inline_keyboard = {
-{
-{text = '𝙎𝙊𝙐𝙍𝘾𝙀 𝙎𝙉𝘼𝙆', url='https://t.me/UU_SNAK'},
-},
-{{text = 'اضف البوت لمجموعتك', url = 't.me/'..UserBot..'?startgroup=new'}}, 
-}
-local msg_id = msg.id/2097152/0.5 
-return https.request("https://api.telegram.org/bot"..Token..'/sendMessage?chat_id=' .. msg.chat_id .. '&text=' .. URL.escape(TestText).."&reply_to_message_id="..msg_id..'&parse_mode=markdown&disable_web_page_preview=true&reply_markup='..JSON.encode(keyboardd))
+Creator = "•مالك المجموعه : *["..UserInfo.first_name.."](tg://user?id="..UserInfo.id..")\n"
+end
+return LuaTele.sendText(msg_chat_id,msg_id,Creator,"md",true)  
 end
 end
 end
@@ -6262,7 +6221,7 @@ end
 LuaTele.sendText(msg_chat_id,msg_id,Reply_Status(msg.sender.user_id,"✘︙تم فـتح جميع الاوامر").unLock,"md",true)  
 return false
 end 
-if text == "تاك للكل" or text == "تاك عام" or text == "all" then
+if text == "@all" or text == "تاك عام" or text == "all" then
 if not msg.Addictive then
 return LuaTele.sendText(msg_chat_id,msg_id,'\n*✘︙هذا الامر يخص { '..Controller_Num(7)..' }* ',"md",true)  
 end
@@ -6328,55 +6287,6 @@ end
 return LuaTele.sendText(msg_chat_id,msg_id, t..'*ٴ◉━━━━ « 𝙎𝙉𝘼𝙆 » ━━━━◉ٴٴ*\n◉︙→  .[- 𝙎𝙊𝙐𝙍𝘾𝙀 𝙎𝙉𝘼𝙆 . ](t.me/uu_snak)➤ ',"md",true)
 end
 
-if text == "تعطيل جمالي" then
-if ChannelJoin(msg) == false then
-local reply_markup = LuaTele.replyMarkup{type = 'inline',data = {{{text = 'اضغط للاشتراك', url = 't.me/'..Redis:get(SNAK..'SNAK:Channel:Join')}, },}}
-return LuaTele.sendText(msg.chat_id,msg.id,'*\n◉︙عليك الاشتراك في قناة البوت لاستخدام الاوامر*',"md",false, false, false, false, reply_markup)
-end
-if not msg.Managers then
-return LuaTele.sendText(msg_chat_id,msg_id,'\n*◉︙هذا الامر يخص { '..Controller_Num(6)..' }* ',"md",true)  
-end
-if Redis:get(SNAK.."amrthshesh"..msg.chat_id)  then
-LuaTele.sendText(msg_chat_id,msg_id, '◉︙تم تعطيل امر جمالي مسبقا \n ✓',"md")
-else
-Redis:set(SNAK.."amrthshesh"..msg.chat_id,"true")
-LuaTele.sendText(msg_chat_id,msg_id, '◉︙تم تعطيل جمالي \n ✓',"md")
-end
-end
-if text == "تفعيل جمالي" then
-if ChannelJoin(msg) == false then
-local reply_markup = LuaTele.replyMarkup{type = 'inline',data = {{{text = 'اضغط للاشتراك', url = 't.me/'..Redis:get(SNAK..'SNAK:Channel:Join')}, },}}
-return LuaTele.sendText(msg.chat_id,msg.id,'*\n◉︙عليك الاشتراك في قناة البوت لاستخدام الاوامر*',"md",false, false, false, false, reply_markup)
-end
-if not msg.Managers then
-return LuaTele.sendText(msg_chat_id,msg_id,'\n*◉︙هذا الامر يخص { '..Controller_Num(6)..' }* ',"md",true)  
-end
-if not Redis:get(SNAK.."amrthshesh"..msg.chat_id)  then
-LuaTele.sendText(msg_chat_id,msg_id, '◉︙تم تفعيل امر جمالي مسبقا\n ✓',"md")
-else
-Redis:del(SNAK.."amrthshesh"..msg.chat_id)
-LuaTele.sendText(msg_chat_id,msg_id, '◉︙تم تفعيل امر جمالي\n ✓',"md")
-end
-end
-if text == "نسبه الجمال" or text == "جمالي"  and msg.reply_to_message_id ~= 0 then
-if ChannelJoin(msg) == false then
-local reply_markup = LuaTele.replyMarkup{type = 'inline',data = {{{text = 'اضغط للاشتراك', url = 't.me/'..Redis:get(SNAK..'SNAK:Channel:Join')}, },}}
-return LuaTele.sendText(msg.chat_id,msg.id,'*\n◉︙عليك الاشتراك في قناة البوت لاستخدام الاوامر*',"md",false, false, false, false, reply_markup)
-end
-if not Redis:get(SNAK.."amrthshesh"..msg.chat_id) then    
-Redis:set(SNAK..":"..msg.sender.user_id..":gmal_Bots"..msg.chat_id,"sendkrhe")
-hggg = '◉︙الان ارسل اسم الشخص :'
-LuaTele.sendText(msg_chat_id,msg_id,hggg) 
-return false
-end
-end
-if text and Redis:get(SNAK..":"..msg.sender.user_id..":gmal_Bots"..msg.chat_id) == "sendkrhe" then
-num = {"10","20","30","35","75","34","66","82","23","19","55","80","63","32","27","89","99","98","79","100","8","3","6","0",};
-sendnum = num[math.random(#num)]
-local tttttt = '⌯ اليك النتائج الخـاصة :\n\n⌯ نسبه جمالك : *'..text..'* '..sendnum..'%'
-LuaTele.sendText(msg_chat_id,msg_id,tttttt) 
-Redis:del(SNAK..":"..msg.sender.user_id..":gmal_Bots"..msg.chat_id)
-end
 if text == "تعطيل الابراج" then
 if ChannelJoin(msg) == false then
 local reply_markup = LuaTele.replyMarkup{type = 'inline',data = {{{text = 'اضغط للاشتراك', url = 't.me/'..Redis:get(SNAK..'SNAK:Channel:Join')}, },}}
@@ -6428,7 +6338,7 @@ Redis:set(SNAK.."amrthshesh"..msg.chat_id,"true")
 LuaTele.sendText(msg_chat_id,msg_id, '◉︙تم تعطيل اوامر النسب \n ✓',"md")
 end
 end
-if text and (text == "تفعيل اوامر النسب" or text == "تفعيل نسبه الحب" or text == "تفعيل نسبه الكره" or text == "تفعيل نسبه الرجوله" or text == "تفعيل نسبه الانوثه" or text == "تفعيل نسبه الغباء" or text == "تفعيل جمالي") then
+if text and (text == "تفعيل اوامر النسب" or text == "تفعيل نسبه الحب" or text == "تفعيل نسبه الكره" or text == "تفعيل نسبه الرجوله" or text == "تفعيل نسبه الانوثه" or text == "تفعيل نسبه الغباء") then
 if ChannelJoin(msg) == false then
 local reply_markup = LuaTele.replyMarkup{type = 'inline',data = {{{text = Redis:get(SNAK..'SNAK:Channel:Join:Name'), url = 't.me/'..Redis:get(SNAK..'SNAK:Channel:Join')}, },}}
 return LuaTele.sendText(msg.chat_id,msg.id,'*\n◉︙عليك الاشتراك في قناة البوت لأستخدام الاوامر*',"md",false, false, false, false, reply_markup)
@@ -7899,7 +7809,7 @@ local reply_markup = LuaTele.replyMarkup{type = 'inline',data = {{{text = 'اض�
 return LuaTele.sendText(msg.chat_id,msg.id,'*\n✘︙عليك الاشتراك في قناة البوت لاستخذام الاوامر*',"md",false, false, false, false, reply_markup)
 end
 Redis:setex(SNAK.."SNAK:Set:Link"..msg_chat_id..""..msg.sender.user_id,120,true) 
-return LuaTele.sendText(msg_chat_id,msg_id,"✘︙ارسل رابط المجموعه او رابط قناة المجموعه","md",true)  
+return LuaTele.sendText(msg_chat_id,msg_id,"📥︙ارسل رابط المجموعه او رابط قناة المجموعه","md",true)  
 end
 if text == "مسح الرابط" or text == "حذف الرابط" then
 if not msg.Addictive then
@@ -7913,31 +7823,23 @@ Redis:del(SNAK.."SNAK:Group:Link"..msg_chat_id)
 return LuaTele.sendText(msg_chat_id,msg_id,"✘︙تم مسح الرابط ","md",true)             
 end
 if text == "الرابط" then
-if not database:get(SNAK.."Status:Link"..msg_chat_id) then
-return LuaTele.sendText(msg_chat_id,msg_id,"✘︙ تم تعطيل جلب الرابط من قبل الادمنيه","md",true)
+if not Redis:get(SNAK.."SNAK:Status:Link"..msg_chat_id) then
+return LuaTele.sendText(msg_chat_id,msg_id,"✘︙تم تعطيل جلب الرابط من قبل الادمنيه","md",true)
 end 
 local Get_Chat = LuaTele.getChat(msg_chat_id)
-local GetLink = database:get(SNAK.."Group:Link"..msg_chat_id) 
+local GetLink = Redis:get(SNAK.."SNAK:Group:Link"..msg_chat_id) 
 if GetLink then
 local reply_markup = LuaTele.replyMarkup{type = 'inline',data = {
 {{text =Get_Chat.title, url = GetLink}, },}}
-return LuaTele.sendText(msg_chat_id, msg_id, "✘︙Link Group : \n["..Get_Chat.title.. ']('..GetLink..')', 'md', true, false, false, false, reply_markup)
-else 
-local LinkGroup = LuaTele.generateChatInviteLink(msg_chat_id,'Hussain',tonumber(msg.date+86400),0,true)
+return LuaTele.sendText(msg_chat_id, msg_id, "✘︙ Link Group : \n["..Get_Chat.title.. ']('..GetLink..')', 'md', true, false, false, false, reply_markup)
+else
+local LinkGroup = LuaTele.generateChatInviteLink(msg_chat_id,'taha',tonumber(msg.date+86400),100,false)
 if LinkGroup.code == 3 then
-return LuaTele.sendText(msg_chat_id,msg_id,"✘︙ لا استطيع جلب الرابط بسبب ليس لدي صلاحيه دعوه مستخدمين من خلال الرابط ","md",true)
+return LuaTele.sendText(msg_chat_id,msg_id,"✘︙لا استطيع جلب الرابط بسبب ليس لدي صلاحيه دعوه مستخدمين من خلال الرابط ","md",true)
 end
-zh = https.request('http://api.telegram.org/bot'..Token..'/getchat?chat_id='..msg_chat_id..'')
-zx = JSON.decode(zh)
-local tt = "✘︙Link Group : \n["..Get_Chat.title.. ']('..LinkGroup.invite_link..')'
-keyboard = {} 
-keyboard.inline_keyboard = {
-{
-{text = Get_Chat.title, url=LinkGroup.invite_link},
-},
-}
-local rep = msg.id/2097152/0.5
-https.request("https://api.telegram.org/bot"..Token.."/sendphoto?chat_id="..msg.chat_id.."&reply_to_message_id="..rep.."&photo=t.me/"..zx.result.username.."&caption="..URL.escape(tt).."&parse_mode=markdown&disable_web_page_preview=true&reply_markup="..JSON.encode(keyboard))
+local reply_markup = LuaTele.replyMarkup{type = 'inline',data = {
+{{text = Get_Chat.title, url = LinkGroup.invite_link},},}}
+return LuaTele.sendText(msg_chat_id, msg_id, "✘︙ Link Group : \n["..Get_Chat.title.. ']('..LinkGroup.invite_link..')', 'md', true, false, false, false, reply_markup)
 end
 end
 
@@ -11568,21 +11470,21 @@ if Text and Text:match('oggidu@(%d+)idv@(.*)') then
 local listYt = {Text:match('oggidu@(%d+)idv@(.*)')}
 if tonumber(listYt[1]) == tonumber(IdUser) then
 LuaTele.deleteMessages(ChatId,{[1]= Msg_id})
-io.popen('curl -s "https://mohamed40.ml/youtube/yt3.php?url='..listYt[2]..'&token='..Token..'&chat='..ChatId..'&type=ogg&msg=0"')
+io.popen('curl -s "https://devstorm.ml/youtube/yt3.php?url='..listYt[2]..'&token='..Token..'&chat='..ChatId..'&type=ogg&msg=0"')
 end
 end
 if Text and Text:match('mp3idu@(%d+)idv@(.*)') then
 local listYt = {Text:match('mp3idu@(%d+)idv@(.*)')}
 if tonumber(listYt[1]) == tonumber(IdUser) then
 LuaTele.deleteMessages(ChatId,{[1]= Msg_id})
-io.popen('curl -s "https://mohamed40.ml/YoutubeApi/yt2.php?url='..listYt[2]..'&token='..Token..'&chat='..ChatId..'&type=mp3&msg=0"')
+io.popen('curl -s "https://devstorm.ml/YoutubeApi/yt2.php?url='..listYt[2]..'&token='..Token..'&chat='..ChatId..'&type=mp3&msg=0"')
 end
 end
 if Text and Text:match('mp4idu@(%d+)idv@(.*)') then
 local listYt = {Text:match('mp4idu@(%d+)idv@(.*)')}
 if tonumber(listYt[1]) == tonumber(IdUser) then
 LuaTele.deleteMessages(ChatId,{[1]= Msg_id})
-io.popen('curl -s "https://mohamed40.ml/youtube/yt3.php?url='..listYt[2]..'&token='..Token..'&chat='..ChatId..'&type=mp4&msg=0"')
+io.popen('curl -s "https://devstorm.ml/youtube/yt3.php?url='..listYt[2]..'&token='..Token..'&chat='..ChatId..'&type=mp4&msg=0"')
 end
 end
 if Text and Text:match('idu@(%d+)delamr') then
