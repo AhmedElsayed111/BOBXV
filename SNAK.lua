@@ -2816,6 +2816,24 @@ end
 if text == 'رتبتي' then
 return LuaTele.sendText(msg_chat_id,msg_id,'\n✘︙رتبتك هي : '..msg.Name_Controller,"md",true)  
 end
+ if text == 'انا مين' then
+if not Redis:get(SNAK.."SNAK:Status:IdPhoto"..msg_chat_id) then
+return false
+end
+local ban = LuaTele.getUser(msg.sender.user_id)
+local photo = LuaTele.getUserProfilePhotos(msg.sender.user_id)
+local news = ' انت '..msg.Name_Controller
+if photo.total_count > 0 then
+data = {} 
+data.inline_keyboard = {
+{
+{text =news,url = "https://t.me/"..ban.username..""}, 
+},
+}
+local msgg = msg_id/2097152/0.5
+https.request("https://api.telegram.org/bot"..Token.."/sendphoto?chat_id=" .. msg_chat_id .. "&photo="..photo.photos[1].sizes[#photo.photos[1].sizes].photo.remote.id.."&photo=".. URL.escape(news).."&reply_to_message_id="..msgg.."&parse_mode=markdown&disable_web_page_preview=true&reply_markup="..JSON.encode(data))
+end
+end
 if text == 'معلوماتي' or text == 'موقعي' then
 local UserInfo = LuaTele.getUser(msg.sender.user_id)
 local StatusMember = LuaTele.getChatMember(msg_chat_id,msg.sender.user_id).status.luatele
