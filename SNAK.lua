@@ -5746,11 +5746,11 @@ LuaTele.setChatMemberStatus(msg.chat_id,UserId,'banned',0)
 return LuaTele.sendText(msg_chat_id,msg_id,Reply_Status(UserId,"✘︙تم طرده من المجموعه ").Reply,"md",true)  
 end
 if text == 'نزلني' or text == 'نزيلني' then
-if not bot_data:get(ban_id..'Cick:Me'..msg.chat_id_) then 
+if not Redis:get(SNAK.."SNAK:Status:remMe"..msg_chat_id) then
 local Text = "✘︙ هل انت متاكد  من تنزيلك من جميع الرتب: "
 keyboard = {} 
 keyboard.inline_keyboard = {
-{{text="نعم",callback_data="nzllne"..msg.sender_user_id_},{text="لا",callback_data="noKikedMe"..msg.sender_user_id_}},
+{{text="نعم",callback_data="لاا"..msg.sender_user_id_},{text="لا",callback_data="noKikedMe"..msg.sender_user_id_}},
 }
 local msg_id = msg.id_/2097152/0.5
 https.request("https://api.telegram.org/bot"..token..'/sendMessage?chat_id=' .. msg.chat_id_ .. '&text=' .. URL.escape(Text).."&reply_to_message_id="..msg_id.."&parse_mode=markdown&disable_web_page_preview=true&reply_markup="..JSON.encode(keyboard))
@@ -6557,7 +6557,17 @@ keyboard.inline_keyboard = {
 {text = 'أغنيه اخري', callback_data="/bob"},
 },
 }
-DeleteMessage(Chat_id,{[0] = Msg_id})
+if text == "/bob" then 
+Text = '◉︙تم اختيار الاغنيه لك'
+Abs = math.random(1,200)
+keyboard = {}
+keyboard.inline_keyboard = {
+{
+{text = 'أغنيه اخري', callback_data="/bob"},
+},
+}
+local MsgId = msg.id/2097152/0.5
+local MSGID = string.gsub(MsgId,'.0','')
 https.request("https://api.telegram.org/bot"..Token..'/sendVoice?chat_id=' .. msg.chat_id .. '&voice=https://t.me/hhhbobxv/'..Abs..'&caption=' .. URL.escape(Text).."&reply_to_message_id="..MsgId.."&parse_mode=markdown") 
 end
 if text == "ميمز" or text == "ميمزز" then 
