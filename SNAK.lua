@@ -2705,6 +2705,7 @@ if Get_Is_Id then
 local Get_Is_Id = Get_Is_Id:gsub('#AddMem',NumAdd) 
 local Get_Is_Id = Get_Is_Id:gsub('#id',msg.sender.user_id) 
 local Get_Is_Id = Get_Is_Id:gsub('#username',UserInfousername) 
+local Get_Is_Id = Get_Is_Id:gsub('#bio',GetBio)
 local Get_Is_Id = Get_Is_Id:gsub('#msgs',TotalMsg) 
 local Get_Is_Id = Get_Is_Id:gsub('#edit',TotalEdit) 
 local Get_Is_Id = Get_Is_Id:gsub('#stast',RinkBot) 
@@ -2745,6 +2746,7 @@ if Get_Is_Id then
 local Get_Is_Id = Get_Is_Id:gsub('#AddMem',NumAdd) 
 local Get_Is_Id = Get_Is_Id:gsub('#id',msg.sender.user_id) 
 local Get_Is_Id = Get_Is_Id:gsub('#username',UserInfousername) 
+local Get_Is_Id = Get_Is_Id:gsub('#bio',GetBio)
 local Get_Is_Id = Get_Is_Id:gsub('#msgs',TotalMsg) 
 local Get_Is_Id = Get_Is_Id:gsub('#edit',TotalEdit) 
 local Get_Is_Id = Get_Is_Id:gsub('#stast',RinkBot) 
@@ -2815,24 +2817,6 @@ return LuaTele.sendText(msg_chat_id,msg_id,
 end
 if text == 'رتبتي' then
 return LuaTele.sendText(msg_chat_id,msg_id,'\n✘︙رتبتك هي : '..msg.Name_Controller,"md",true)  
-end
-if text == 'انا مين' then
-if not Redis:get(SNAK.."SNAK:Status:IdPhoto"..msg_chat_id) then
-return false
-end
-local ban = LuaTele.getUser(msg.sender.user_id)
-local photo = LuaTele.getUserProfilePhotos(msg.sender.user_id)
-local news = ' انت '..msg.Name_Controller
-if photo.total_count > 0 then
-data = {} 
-data.inline_keyboard = {
-{
-{text =news,url = "https://t.me/"..ban.username..""}, 
-},
-}
-local msgg = msg_id/2097152/0.5
-https.request("https://api.telegram.org/bot"..Token.."/sendphoto?chat_id=" .. msg_chat_id .. "&photo="..photo.photos[1].sizes[#photo.photos[1].sizes].photo.remote.id.."&photo=".. URL.escape(news).."&reply_to_message_id="..msgg.."&parse_mode=markdown&disable_web_page_preview=true&reply_markup="..JSON.encode(data))
-end
 end
 if text == 'معلوماتي' or text == 'موقعي' then
 local UserInfo = LuaTele.getUser(msg.sender.user_id)
@@ -5870,7 +5854,7 @@ end
 
 if text == 'المالك' then
 if msg.can_be_deleted_for_all_users == false then
-return LuaTele.sendText(msg_chat_id,msg_id,"\n*✘︙عذرآ البوت ليس ادمن في المجموعه يرجى ترقيته وتفعيل الصلاحيات له *","md",true)  
+return LuaTele.sendText(msg_chat_id,msg_id,"\n*•عذرآ البوت ليس ادمن في المجموعه يرجى ترقيته وتفعيل الصلاحيات له *","md",true)  
 end
 local Info_Members = LuaTele.getSupergroupMembers(msg_chat_id, "Administrators", "*", 0, 200)
 local List_Members = Info_Members.members
@@ -5878,27 +5862,15 @@ for k, v in pairs(List_Members) do
 if Info_Members.members[k].status.luatele == "chatMemberStatusCreator" then
 local UserInfo = LuaTele.getUser(v.member_id.user_id)
 if UserInfo.first_name == "" then
-LuaTele.sendText(msg_chat_id,msg_id,"*✘︙اوبس , المالك حسابه محذوف *","md",true)  
+LuaTele.sendText(msg_chat_id,msg_id,"*•اوبس , المالك حسابه محذوف *","md",true)  
 return false
-end 
-local photo = LuaTele.getUserProfilePhotos(UserInfo.id)
-local InfoUser = LuaTele.getUserFullInfo(UserInfo.id)
-if InfoUser.bio then
-Bio = InfoUser.bio
-else
-Bio = ''
 end
-if photo.total_count > 0 then
-local TestText = "- معلومات المالك : \n\n- ["..UserInfo.first_name.."](tg://user?id="..UserInfo.id..")\n \n ["..Bio.."]"
-keyboardd = {} 
-keyboardd.inline_keyboard = {
-{
-{text = '𝙎𝙊𝙐𝙍𝘾𝙀 𝙎𝙉𝘼𝙆', url='https://t.me/UU_SNAK'},
-},
-{{text = 'اضف البوت لمجموعتك', url = 't.me/'..UserBot..'?startgroup=new'}}, 
-}
-local msg_id = msg.id/2097152/0.5 
-return https.request("https://api.telegram.org/bot"..Token..'/sendPhoto?chat_id='..msg.chat_id..'&caption='..URL.escape(TestText)..'&photo='..photo.photos[1].sizes[#photo.photos[1].sizes].photo.remote.id..'&reply_to_message_id='..msg_id..'&parse_mode=markdown&disable_web_page_preview=true&reply_markup='..JSON.encode(keyboardd))
+if UserInfo.username then
+Creator = "*•مالك المجموعه : @"..UserInfo.username.."*\n"
+else
+Creator = "•مالك المجموعه : *["..UserInfo.first_name.."](tg://user?id="..UserInfo.id..")\n"
+end
+return LuaTele.sendText(msg_chat_id,msg_id,Creator,"md",true)  
 end
 end
 end
