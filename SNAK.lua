@@ -6544,28 +6544,28 @@ ge = io.popen('curl -s "https://apiabs.ml/age.php?age='..URL.escape(Textage)..'"
 ag = JSON.decode(ge)
 LuaTele.sendText(msg_chat_id,msg_id, ag.ok.abs)
 end  
-if text == "غنيلي" or text == "غني" then 
-Abs = math.random(1,200);
-local Text ='*◉︙تم اختيار الاغنيه لك*'
+if text == "غنيلي" or text == "غني" then  
+ban = math.random(3,42); 
+local Text ='◉︙تم اختيار الاغنيه لك' 
 keyboard = {}  
-keyboard.inline_keyboard = { 
-{{text = 'أغنيه اخري', callback_data="/bob"}}, 
+keyboard.inline_keyboard = {
+{{text = 'اغنيه اخري', callback_data="/allstate"}}, 
 } 
-local MsgId = msg.id/2097152/0.5
-local MSGID = string.gsub(MsgId,'.0','')
-https.request("https://api.telegram.org/bot"..Token..'/sendVoice?chat_id=' .. msg.chat_id .. '&voice=https://t.me/hhhbobxv/'..Abs..'&caption=' .. URL.escape(Text).."&reply_to_message_id="..MsgId.."&parse_mode=markdown") 
+local msg_id = msg.id_/2097152/0.5 
+https.request("https://api.telegram.org/bot"..token..'/sendVoice?chat_id=' .. msg.chat_id_ .. '&voice=https://t.me/hhhbobxv/'..ban..'&caption=' .. URL.escape(Text).."&reply_to_message_id="..msg_id.."&parse_mode=markdown&disable_web_page_preview=true&reply_markup="..JSON.encode(keyboard)) 
+end
 end
 if text == "/bob" then 
-Text = '◉︙تم اختيار الاغنيه لك'
-ban = math.random(1,28); 
+Text = 'اليك اغنيه عشوائيه من البوت'
+ban = math.random(3,42); 
 keyboard = {}
 keyboard.inline_keyboard = {
 {
-{text = 'أغنيه اخري', callback_data="/bob"},
+{text = 'اغنيه اخري', callback_data="/allstate"},
 },
 }
-DeleteMessage(Chat_id,{[0] = Msg_id})
-https.request("https://api.telegram.org/bot"..Token..'/sendVoice?chat_id=' .. msg.chat_id .. '&voice=https://t.me/hhhbobxv/'..Abs..'&caption=' .. URL.escape(Text).."&reply_to_message_id="..MsgId.."&parse_mode=markdown") 
+DeleteMessage(Chat_id,{[0] = Msg_id})  
+https.request("https://api.telegram.org/bot"..token..'/sendVoice?chat_id=' .. Chat_id .. '&voice=https://t.me/hhhbobxv/'..ban..'&caption=' .. URL.escape(Text).."&reply_to_message_id=0&parse_mode=markdown&disable_web_page_preview=true&reply_markup="..JSON.encode(keyboard))
 end
 if text == "ميمز" or text == "ميمزز" then 
 Abs = math.random(2,140); 
