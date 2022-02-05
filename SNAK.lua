@@ -7864,8 +7864,8 @@ Redis:del(SNAK.."SNAK:Group:Link"..msg_chat_id)
 return LuaTele.sendText(msg_chat_id,msg_id,"✘︙تم مسح الرابط ","md",true)             
 end
 if text == "الرابط" then
-if not database:get(SNAK.."Status:Link"..msg_chat_id) then
-return LuaTele.sendText(msg_chat_id,msg_id,"✘︙ تم تعطيل جلب الرابط من قبل الادمنيه","md",true)
+if not Redis:get(SNAK.."SNAK:Status:Link"..msg_chat_id) then
+return LuaTele.sendText(msg_chat_id,msg_id,"✘︙تم تعطيل جلب الرابط من قبل الادمنيه","md",true)
 end 
 local Get_Chat = LuaTele.getChat(msg_chat_id)
 local GetLink = database:get(SNAK.."Group:Link"..msg_chat_id) 
