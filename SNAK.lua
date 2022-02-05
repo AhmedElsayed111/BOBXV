@@ -10809,6 +10809,7 @@ return LuaTele.sendText(msg_chat_id,msg_id,[[*
 ✘︙ غنيلي - غ .
 *]],"md")
 end
+end
 
 end -- GroupBot
 if chat_type(msg.chat_id) == "UserBot" then 
