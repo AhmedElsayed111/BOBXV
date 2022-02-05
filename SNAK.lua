@@ -5988,7 +5988,6 @@ LuaTele.answerCallbackQuery(data.id, "✘︙ تم الغاء الامر بنجا
 LuaTele.leaveChat(UserId)
 end
 end
- 
 if text == 'تاك للكل' then
 if not msg.Addictive then
 return LuaTele.sendText(msg_chat_id,msg_id,'\n*✘︙هاذا الامر يخص { '..Controller_Num(7)..' }* ',"md",true)  
