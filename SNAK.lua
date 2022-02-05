@@ -5970,7 +5970,7 @@ local reply_markup = LuaTele.replyMarkup{
 type = 'inline',
 data = {
 {
-{text = 'تأكيد الامر', data = '/Zxchq'..msg_chat_id}, {text = 'الغاء الامر', data = msg.sender.user_id..'/Redis'}, 
+{text = 'تأكيد الامر', data = msg.sender.user_id..'/Zxchq'}, {text = 'الغاء الامر', data = msg.sender.user_id..'/Redis'}, 
 },
 }
 }
@@ -5979,16 +5979,16 @@ end
 -------------------
 if Text and Text:match('/Zxchq(.*)') then
 local UserId = Text:match('/Zxchq(.*)')
-LuaTele.answerCallbackQuery(data.id, "✘︙ تم مغادره البوت من المجموعه", true)
+LuaTele.answerCallbackQuery(data.id, "✘︙تم مغادره البوت من المجموعه", true)
 LuaTele.leaveChat(UserId)
 end
-if Text and Text:match('(%d+)/Redis') then
-local UserId = Text:match('(%d+)/Redis')
+if Text and Text:match('/Redis(.*)') then
+local UserId = Text:match('/Redis(.*)')
 LuaTele.answerCallbackQuery(data.id, "✘︙ تم الغاء الامر بنجاح", true)
-if tonumber(IdUser) == tonumber(UserId) then
-return LuaTele.deleteMessages(ChatId,{[1]= Msg_id})
+LuaTele.leaveChat(UserId)
 end
 end
+ 
 if text == 'تاك للكل' then
 if not msg.Addictive then
 return LuaTele.sendText(msg_chat_id,msg_id,'\n*✘︙هاذا الامر يخص { '..Controller_Num(7)..' }* ',"md",true)  
