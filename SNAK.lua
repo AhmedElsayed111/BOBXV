@@ -130,7 +130,7 @@ elseif UserId == 2123332060 then
 Status = true
 elseif UserId == Sudo_Id then  
 Status = true
-elseif UserId == SNAK thenال
+elseif UserId == SNAK then
 Status = true
 elseif DevelopersQ then
 Status = true
