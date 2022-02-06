@@ -7858,15 +7858,7 @@ return LuaTele.sendText(msg_chat_id,msg_id,"✘︙لا استطيع جلب ال�
 end
 local reply_markup = LuaTele.replyMarkup{type = 'inline',data = {
 {{text = Get_Chat.title, url = LinkGroup.invite_link},},}}
-return LuaTele.sendText(msg_chat_id, msg_id, "✘︙ Link Group : \n["..Get_Chat.title.. ']('..LinkGroup.invite_link..')'
-keyboard = {} 
-keyboard.inline_keyboard = {
-{
-{text = Get_Chat.title, url=LinkGroup.invite_link},
-},
-}
-local rep = msg.id/2097152/0.5
-https.request("https://api.telegram.org/bot"..Token.."/sendphoto?chat_id="..msg.chat_id.."&reply_to_message_id="..rep.."&photo=t.me/"..zx.result.username.."&caption="..URL.escape(tt).."&parse_mode=markdown&disable_web_page_preview=true&reply_markup="..JSON.encode(keyboard))
+return LuaTele.sendText(msg_chat_id, msg_id, "✘︙ Link Group : \n["..Get_Chat.title.. ']('..LinkGroup.invite_link..')', 'md', true, false, false, false, reply_markup)
 end
 end
 
