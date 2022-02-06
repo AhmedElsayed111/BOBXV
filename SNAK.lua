@@ -7858,7 +7858,7 @@ return LuaTele.sendText(msg_chat_id,msg_id,"✘︙لا استطيع جلب ال�
 end
 zh = https.request('http://api.telegram.org/bot'..Token..'/getchat?chat_id='..msg_chat_id..'')
 zx = JSON.decode(zh)
-return tt = "✘︙Link Group : \n["..Get_Chat.title.. ']('..LinkGroup.invite_link..')'
+local LuaTele.sendText(msg_chat_id, msg_id, "✘︙ Link Group : \n["..Get_Chat.title.. ']('..LinkGroup.invite_link..')'
 keyboard = {} 
 keyboard.inline_keyboard = {
 {
