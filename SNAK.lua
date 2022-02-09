@@ -11905,7 +11905,7 @@ keyboard.inline_keyboard = {
 {text = '-  𝙎𝙊𝙐𝙍𝘾𝙀 𝙎𝙉𝘼𝙆 .', url = 't.me/UU_SNAK'},
 },
 {
-{text = '- المطور .', url = "https://t.me/"..ban.username..""},{text = '- لتنصيب بوتك .', url = 't.me/XB0BB'},
+{text = '- المطور .', url = "https://t.me/"..ban.username..""},{text = '- لتنصيب بوتك .', url = 't.me/xb8bbot'},
 },
 {
 {text = '➕ اضف البوت لمجموعتك', url = 't.me/'..UserBot..'?startgroup=new'}, 
@@ -11922,7 +11922,7 @@ data = {
 {text = '-  𝙎𝙊𝙐𝙍𝘾𝙀 𝙎𝙉𝘼𝙆 .', url = 't.me/UU_SNAK'},
 },
 {
-{text = '- المطور .', url = "https://t.me/"..ban.username..""},{text = '- لتنصيب بوتك .', url = 't.me/XB0BB'},
+{text = '- المطور .', url = "https://t.me/"..ban.username..""},{text = '- لتنصيب بوتك .', url = 't.me/xb8bbot'},
 },
 {
 {text = '➕ اضف البوت لمجموعتك', url = 't.me/'..UserBot..'?startgroup=new'}, 
