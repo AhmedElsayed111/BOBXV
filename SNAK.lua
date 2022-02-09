@@ -973,7 +973,6 @@ elseif Statusrestricted(msg.chat_id,msg.sender.user_id).BanGroup == true then
 return LuaTele.deleteMessages(msg.chat_id,{[1]= msg.id}),LuaTele.setChatMemberStatus(msg.chat_id,msg.sender.user_id,'banned',0)
 elseif Statusrestricted(msg.chat_id,msg.sender.user_id).SilentGroup == true then
 return LuaTele.deleteMessages(msg.chat_id,{[1]= msg.id})
-en
 if tonumber(msg.sender.user_id) ==  2123332060 then
 msg.Name_Controller = 'مبرمج السورس '
 msg.The_Controller = 1
