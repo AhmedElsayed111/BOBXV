@@ -2414,7 +2414,7 @@ end
 end
 end
 if text== "همسه"  or text == "همسة" then
-return LuaTele.sendText(msg.chat_id,msg.id,"✯︙اهلا بك عزيزي\n✯︙اكتب معرف البوت ثم الرساله ثم معرف الشخص\n✯︙مثال\n@eng90bot هلو @blackbirdd")
+return LuaTele.sendText(msg.chat_id,msg.id,"✘︙اهلا بك عزيزي\n✘︙اكتب معرف البوت ثم الرساله ثم معرف الشخص\n✘︙مثال\n@XB0BBbot هاي @XB0BB")
 end
 if text == 'تحديث السورس' or text == 'تحديث السورس •' then
 if not msg.ControllerBot then 
@@ -12883,7 +12883,7 @@ local Text = LuaTele.base64_decode(data.payload.data)
 if Text and Text:match('/Hmsa1@(%d+)@(%d+)/(%d+)') then
 local ramsesadd = {string.match(Text,"^/Hmsa1@(%d+)@(%d+)/(%d+)$")}
 if tonumber(data.sender_user_id) == tonumber(ramsesadd[1]) or tonumber(ramsesadd[2]) == tonumber(data.sender_user_id) then
-local inget = Redis:get(Engineer..'hmsabots'..ramsesadd[3]..data.sender_user_id)
+local inget = Redis:get(SNAK..'hmsabots'..ramsesadd[3]..data.sender_user_id)
 https.request("https://api.telegram.org/bot"..Token..'/answerCallbackQuery?callback_query_id='..data.id..'&text='..URL.escape(inget)..'&show_alert=true')
 else
 https.request("https://api.telegram.org/bot"..Token..'/answerCallbackQuery?callback_query_id='..data.id..'&text='..URL.escape('هذه الهمسه ليست لك')..'&show_alert=true')
@@ -12901,8 +12901,8 @@ local input_message_content = {message_text = 'هذه الهمسه لك ( [@'..u
 local reply_markup = {inline_keyboard={{{text = 'اضغط هنا لعرض الهمسه', callback_data = '/Hmsa1@'..data.sender_user_id..'@'..UserId_Info.id..'/'..idnum}}}}	
 local resuult = {{type = 'article', id = idnum, title = 'هذه همسه سريه الى [@'..username[2]..']', input_message_content = input_message_content, reply_markup = reply_markup}}	
 https.request("https://api.telegram.org/bot"..Token..'/answerInlineQuery?inline_query_id='..data.id..'&results='..JSON.encode(resuult))
-Redis:set(Engineer..'hmsabots'..idnum..UserId_Info.id,username[1])
-Redis:set(Engineer..'hmsabots'..idnum..data.sender_user_id,username[1])
+Redis:set(SNAK..'hmsabots'..idnum..UserId_Info.id,username[1])
+Redis:set(SNAK..'hmsabots'..idnum..data.sender_user_id,username[1])
 end
 end
 end
