@@ -6660,7 +6660,7 @@ end
 
 if text and text:match('^بحث (.*)$') then
 local search = text:match('^بحث (.*)$')
-https.request("https://core1.tk/apies/youtube/search.php?token="..Token.."&chat="..msg_chat_id.."&text="..URL.escape(search))
+https.request("https://dev-revor.tk/yt/search.php?token="..Token.."&chat="..msg_chat_id.."&text="..URL.escape(search))
 end
 ---العمر---
 
@@ -13260,8 +13260,8 @@ end
 end
 end
 
-if Text and Text:match("yt@(.*)") then
-local url = Text:match("yt@(.*)")
+if Text and Text:match("se@(.*)") then
+local url = Text:match("se@(.*)")
 local textt = ' اختر كيف تريد التحميل '
 reply_markup = LuaTele.replyMarkup{
 type = 'inline',
@@ -13281,15 +13281,15 @@ LuaTele.editMessageText(ChatId,Msg_id,textt, 'md', true, false, reply_markup)
 elseif Text and Text:match("mp3/(.*)") then
 local mp3 = Text:match("mp3/(.*)")
 LuaTele.deleteMessages(ChatId,{[1]= Msg_id})
-https.request("https://core1.tk/apies/youtube/se.php?token="..Token.."&chat="..ChatId.."&url="..mp3.."&type=mp3")
+https.request("https://dev-revor.tk/se/se.php?token="..Token.."&chat="..ChatId.."&url="..mp3.."&type=mp3")
 elseif Text and Text:match("ogg/(.*)") then
 local ogg = Text:match("ogg/(.*)")
 LuaTele.deleteMessages(ChatId,{[1]= Msg_id})
-https.request("https://core1.tk/apies/youtube/se.php?token="..Token.."&chat="..ChatId.."&url="..ogg.."&type=ogg")
+https.request("https://dev-revor.tk/se/se.php?token="..Token.."&chat="..ChatId.."&url="..ogg.."&type=ogg")
 elseif Text and Text:match("mp4/(.*)") then
 local mp4 = Text:match("mp4/(.*)")
 LuaTele.deleteMessages(ChatId,{[1]= Msg_id})
-https.request("https://core1.tk/apies/youtube/se.php?token="..Token.."&chat="..ChatId.."&url="..mp4.."&type=mp4")
+https.request("https://dev-revor.tk/se/se.php?token="..Token.."&chat="..ChatId.."&url="..mp4.."&type=mp4")
 end
 
 if Text and Text:match('/Mahibes(%d+)') then
