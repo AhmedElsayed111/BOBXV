@@ -10538,7 +10538,7 @@ keyboard.inline_keyboard = {
 local msgg = msg_id/2097152/0.5
 https.request("https://api.telegram.org/bot"..Token.."/sendphoto?chat_id=" .. msg_chat_id .. "&photo="..photo.."&caption=".. URL.escape(Name).."&reply_to_message_id="..msgg.."&parse_mode=markdown&disable_web_page_preview=true&reply_markup="..JSON.encode(keyboard))
 
-elseif text == 'بيقول اي' or text == "؟؟" or text == "??" or text == "وش يقول" then 
+if text == 'بيقول اي' or text == "؟؟" or text == "??" or text == "وش يقول" then 
 if tonumber(msg.reply_to_message_id) > 0 then
 local result = LuaTele.getMessage(msg.chat_id, msg.reply_to_message_id)
 if result.content.voice_note then 
