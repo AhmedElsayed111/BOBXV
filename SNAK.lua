@@ -10505,7 +10505,7 @@ end
 Redis:del(SNAK..'Texting:DevSNAK')
 return LuaTele.sendText(msg_chat_id,msg_id,'✘︙  تم حذف كليشه المطور')
 end
- if text == 'رابط الحذف' or text == 'روابط الحذف' then
+if text == 'رابط الحذف' or text == 'روابط الحذف' then
 Text =[[
 ✘︙ Hello pro buttons at the bottom to delete social media accounts .
 ]]
@@ -10543,10 +10543,11 @@ if tonumber(msg.reply_to_message_id) > 0 then
 local result = LuaTele.getMessage(msg.chat_id, msg.reply_to_message_id)
 if result.content.voice_note then 
 local rep = msg.id/2097152/0.5
-https.request("https://api.medooo.ml/leomedo/voiceRecognise?token="..Token.."&chat_id="..msg_chat_id.."&file_id="..result.content.voice_note.voice.remote.id.."&msg_id="..rep)
+https.request("https://api.mohamed40.ml/leomedo/voiceRecognise?token="..Token.."&chat_id="..msg_chat_id.."&file_id="..result.content.voice_note.voice.remote.id.."&msg_id="..rep)
 end
 end
 end
+if text == "يوتيوب" or text == "تحميل" then 
 if Redis:get(SNAK.."youtube"..msg.sender.user_id..msg_chat_id) == "mp3" then
 local rep = msg.id/2097152/0.5
 local m = rep +1
@@ -10562,8 +10563,7 @@ https.request("https://api.telegram.org/bot"..Token.."/sendAnimation?chat_id="..
 https.request("https://api.medooo.ml/leomedo/yt?text="..URL.escape(text).."&token="..Token.."&msg_id="..rep.."&chat_id="..msg_chat_id.."&type=mp4")
 https.request("https://api.telegram.org/bot"..Token.."/deleteMessage?chat_id="..msg_chat_id.."&message_id="..m)
 Redis:del(SNAK.."youtube"..msg.sender.user_id..msg_chat_id)
-end
-if text == "يوتيوب" or text == "تحميل" then 
+end  
 local reply_markup = LuaTele.replyMarkup{
 type = 'inline',
 data = {
