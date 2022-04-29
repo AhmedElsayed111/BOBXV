@@ -12559,7 +12559,7 @@ local reply_markup = LuaTele.replyMarkup{
 type = 'inline',
 data = {
 {
-{text = 'شرح الميزه', url = 'https://t.me/UU_SNAK\'}, 
+{text = 'شرح الميزه', url = 'https://t.me/UU_SNAK'}, 
 },
 }
 }
