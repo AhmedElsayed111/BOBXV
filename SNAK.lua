@@ -16910,7 +16910,5 @@ end
 end
 end
 end
-Redis:sadd(SNAK.."eza3a",Token.."&"..SNAK)
-Redis:set("@"..UserBot,SNAK.."&".."@"..UserBot.."$@"..UserSudo.."+"..Token)
 luatele.run(CallBackLua)
  
