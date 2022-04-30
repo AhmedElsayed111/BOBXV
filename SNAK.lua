@@ -14367,7 +14367,7 @@ local UserId = Text:match('(%d+)/help7')
 if tonumber(IdUser) == tonumber(UserId) then
 local reply_markup = LuaTele.replyMarkup{
 type = 'inline',data = {
-{{text = '1', data = IdUser..'/help1'}, {text = '2, data = IdUser..'/help2'}, },
+{{text = '1', data = IdUser..'/help1'}, {text = '2', data = IdUser..'/help2'}, },
 {{text = '3', data = IdUser..'/help3'}, {text = '4', data = IdUser..'/help4'}, },
 {{text = '5', data = IdUser..'/help5'}, },
 {{text = 'القائمه الرئيسيه', data = IdUser..'/helpall'}, },}}
