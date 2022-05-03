@@ -16566,8 +16566,7 @@ if tonumber(IdUser) == tonumber(UserId) then
 Redis:del(SNAK.."8by:Group"..ChatId) 
 local reply_markup = LuaTele.replyMarkup{type = 'inline',data = {{{text = '- رجوع', data =UserId..'/'.. 'NoNextSeting'},},}}
 LuaTele.editMessageText(ChatId,Msg_id,"• تم مسح جميع الأغبياء", 'md', false)
-endd
-
+end
 elseif Text and Text:match('(%d+)/BanAll') then
 local UserId = Text:match('(%d+)/BanAll')
 if tonumber(IdUser) == tonumber(UserId) then
