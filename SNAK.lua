@@ -16504,7 +16504,7 @@ if tonumber(IdUser) == tonumber(UserId) then
 Redis:del(SNAK.."Distinguished:Group"..ChatId) 
 local reply_markup = LuaTele.replyMarkup{type = 'inline',data = {{{text = ': رجوع ➣ .', data =UserId..'/'.. 'NoNextSeting'},},}}
 LuaTele.editMessageText(ChatId,Msg_id,"✘︙ تم مسح المميزين", 'md', false)
-enelseif Text and Text:match('(%d+)/Delkholat') then
+elseif Text and Text:match('(%d+)/Delkholat') then
 local UserId = Text:match('(%d+)/Delkholat')
 if tonumber(IdUser) == tonumber(UserId) then
 Redis:del(SNAK.."kholat:Group"..ChatId) 
