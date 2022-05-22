@@ -1333,7 +1333,7 @@ keyboard.inline_keyboard = {
 {text = ' تفعيل ', callback_data = msg.sender.user_id..'/onlinebott'..msg_chat_id},
 },
 {
-{text = ''-  𝙎𝙊𝙐𝙍𝘾𝙀 𝙎𝙉𝘼𝙆 .', url = 't.me/UU_SNAK'},
+{text = '-  𝙎𝙊𝙐𝙍𝘾𝙀 𝙎𝙉𝘼𝙆 .', url = 't.me/UU_SNAK'},
 }
 }
 local rep = msg.id/2097152/0.5
