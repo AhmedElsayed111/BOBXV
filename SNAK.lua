@@ -8990,7 +8990,7 @@ local reply_markup = LuaTele.replyMarkup{
 type = 'inline',
 data = {
 {
-{text = ''-  𝙎𝙊𝙐𝙍𝘾𝙀 𝙎𝙉𝘼𝙆 .', url = 't.me/'..chsource..''}, 
+{text = '-  𝙎𝙊𝙐𝙍𝘾𝙀 𝙎𝙉𝘼𝙆 .', url = 't.me/'..chsource..''}, 
 },
 }
 }
