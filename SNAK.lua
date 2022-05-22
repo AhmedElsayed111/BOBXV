@@ -12012,7 +12012,7 @@ local reply_markup = LuaTele.replyMarkup{
 type = 'inline',
 data = {
 {{text = 'ترجمه الي العربية', data = msg.sender.user_id..'toar'},{text = 'ترجمه الي الانجليزية', data = msg.sender.user_id..'toen'}},
-{{text = ' '-  𝙎𝙊𝙐𝙍𝘾𝙀 𝙎𝙉𝘼𝙆 .', url = "https://t.me/UU_SNAK"}},
+{{text = '-  𝙎𝙊𝙐𝙍𝘾𝙀 𝙎𝙉𝘼𝙆 .', url = "https://t.me/UU_SNAK"}},
 }
 }
 return send(msg_chat_id,msg_id, [[*
